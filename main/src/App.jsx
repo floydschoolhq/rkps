@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 
 import ScrollToTop from './components/ScrollToTop';
@@ -6,17 +6,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import WhatsNewDrawer from './components/WhatsNewDrawer';
 
-// Pages
+// Pages (home is eager, the rest are code-split)
 import HomePage from './pages/HomePage';
-import VisionMissionPage from './pages/VisionMissionPage';
-import SchoolLegacyPage from './pages/SchoolLegacyPage';
-import PrincipalsDeskPage from './pages/PrincipalsDeskPage';
-import DirectorsDeskPage from './pages/DirectorsDeskPage';
-import FacilitiesPage from './pages/FacilitiesPage';
-import AdmissionsPage from './pages/AdmissionsPage';
-import DownloadsPage from './pages/DownloadsPage';
-import GalleryPage from './pages/GalleryPage';
-import ContactPage from './pages/ContactPage';
+const VisionMissionPage = lazy(() => import('./pages/VisionMissionPage'));
+const SchoolLegacyPage = lazy(() => import('./pages/SchoolLegacyPage'));
+const PrincipalsDeskPage = lazy(() => import('./pages/PrincipalsDeskPage'));
+const DirectorsDeskPage = lazy(() => import('./pages/DirectorsDeskPage'));
+const FacilitiesPage = lazy(() => import('./pages/FacilitiesPage'));
+const AdmissionsPage = lazy(() => import('./pages/AdmissionsPage'));
+const DownloadsPage = lazy(() => import('./pages/DownloadsPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 // Global Interactive Modals
 import AdmissionModal from './components/modals/AdmissionModal';
@@ -124,6 +124,8 @@ function AppShell() {
 
       {/* 2. All Application Routes (Homepage + All 9 Old Website Subpages) */}
       <main className="flex-1">
+        {/* Subpages load on demand; the home page stays in the main bundle. */}
+        <Suspense fallback={<div className="min-h-screen" aria-busy="true" />}>
         <Routes>
           <Route
             path="/"
@@ -225,6 +227,7 @@ function AppShell() {
             }
           />
         </Routes>
+        </Suspense>
       </main>
 
       {/* 3. Institutional 3-Column Footer with All Working Links */}

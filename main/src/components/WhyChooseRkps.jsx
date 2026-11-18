@@ -15,10 +15,14 @@ import {
   Calendar,
   CheckCircle2,
   ShieldCheck,
-  Shield
+  Shield,
+  Play
 } from 'lucide-react';
-import { WHY_CHOOSE_TABS } from '../data/rkpsData';
+import { WHY_CHOOSE_TABS, STUDENT_VOICES } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
+import CountUp from './CountUp';
+import TabStrip from './ui/TabStrip';
+import VideoModal from './ui/VideoModal';
 
 const iconMap = {
   GraduationCap,
@@ -50,6 +54,9 @@ export default function WhyChooseRkps() {
   };
 
   const active = WHY_CHOOSE_TABS[activeTabIdx];
+  const [playing, setPlaying] = useState(null);
+  // SAS panel-2 has a popup video on its slides; the Students tab gets the student reels.
+  const tabVideo = active.id === 'STUDENTS' ? STUDENT_VOICES[0] : null;
 
   return (
     <section
@@ -75,9 +82,12 @@ export default function WhyChooseRkps() {
           </p>
 
           {/* Horizontal Tab Bar */}
-          <div
-            style={{ transitionDelay: '250ms' }}
-            className="sas-reveal-up mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+          <TabStrip
+            activeIndex={activeTabIdx}
+            tone="dark"
+            fadeClass="from-[#071f4c]"
+            wrapperClassName="sas-reveal-up mt-8"
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 max-lg:justify-start max-lg:py-2 max-lg:px-1"
           >
             {WHY_CHOOSE_TABS.map((tab, idx) => (
               <button
@@ -92,7 +102,7 @@ export default function WhyChooseRkps() {
                 {tab.tabLabel}
               </button>
             ))}
-          </div>
+          </TabStrip>
         </div>
 
         {/* Dynamic Tab Content (SAS .panel-2 slide-from-left image + content reveal) */}
@@ -115,6 +125,20 @@ export default function WhyChooseRkps() {
               </div>
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent pointer-events-none" />
+
+              {tabVideo && (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(tabVideo)}
+                  className="absolute inset-0 flex flex-col items-center justify-center gap-3 cursor-pointer group/play"
+                  aria-label="Play student story video"
+                >
+                  <span className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#a22634] text-white flex items-center justify-center shadow-2xl ring-8 ring-white/15 transition-transform duration-300 group-hover/play:scale-110">
+                    <Play className="w-7 h-7 sm:w-8 sm:h-8 translate-x-0.5" fill="currentColor" />
+                  </span>
+                  <span className="font-bebas text-lg tracking-widest uppercase text-white drop-shadow">Watch their story</span>
+                </button>
+              )}
             </div>
           </div>
 
@@ -145,9 +169,11 @@ export default function WhyChooseRkps() {
                       <IconComponent className="w-5 h-5" />
                     </div>
 
-                    <span className="font-bebas text-3xl sm:text-4xl text-[#faba28] tracking-wider leading-none">
-                      {st.num}
-                    </span>
+                    <CountUp
+                      key={`${active.id}-${i}`}
+                      value={st.num}
+                      className="font-bebas text-3xl sm:text-4xl text-[#faba28] tracking-wider leading-none tabular-nums"
+                    />
 
                     <span className="mt-1 text-xs text-white/75 leading-snug">
                       {st.label}
@@ -182,6 +208,7 @@ export default function WhyChooseRkps() {
           </div>
         </div>
       </div>
+      <VideoModal video={playing} onClose={() => setPlaying(null)} />
     </section>
   );
 }

@@ -5,9 +5,10 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import exteriorImg from '@assets/Radha Krishna Public School Exterior.png';
-import slide3Img from '@assets/slides/3.png';
-import slide4Img from '@assets/slides/4.png';
+import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
+import slide3Img from '@assets/slides/3.webp';
+import slide4Img from '@assets/slides/4.webp';
+import slide5Img from '@assets/slides/5.webp';
 
 const facilityBentoItems = [
   {
@@ -31,7 +32,7 @@ const facilityBentoItems = [
     tag: 'Knowledge Repository',
     category: 'library',
     tagColor: 'bg-blue-600 text-white font-bold',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner2.jpg',
+    image: exteriorImg,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: BookOpen,
     badgeFeatures: ['20,000+ Volumes', 'Digital Carrels'],
@@ -45,7 +46,7 @@ const facilityBentoItems = [
     tag: 'Academic Distinction',
     category: 'academic',
     tagColor: 'bg-emerald-600 text-white font-bold',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner3.jpg',
+    image: slide3Img,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: ShieldCheck,
     isFeatured: true, // Signature amber border from reference design
@@ -87,7 +88,7 @@ const facilityBentoItems = [
     tag: 'Cultural Center',
     category: 'arts',
     tagColor: 'bg-purple-600 text-white font-bold',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner1.jpg',
+    image: slide5Img,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Music,
     badgeFeatures: ['1,200 Capacity', 'Acoustic Sound', 'Grand Stage'],
@@ -104,20 +105,8 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
     : facilityBentoItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="bg-[#fff6f8] text-slate-800 min-h-screen relative overflow-hidden">
+    <div className="bg-[#faf9f6] text-slate-800 min-h-screen relative overflow-hidden">
       
-      {/* Signature Staggered Polka-Dot Canvas Pattern (Ravensbourne Reference) */}
-      <div 
-        className="absolute inset-0 pointer-events-none bg-ravensbourne-dots"
-      />
-
-      {/* Top-Right Magenta/Rose Curved Accent Arc */}
-      <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 pointer-events-none overflow-hidden z-0">
-        <div 
-          className="w-80 sm:w-[420px] md:w-[480px] h-80 sm:h-[420px] md:h-[480px] -top-28 sm:-top-36 md:-top-40 -right-28 sm:-right-36 md:-right-40 absolute rounded-full bg-gradient-to-bl from-[#e11d48] via-[#e11d48] to-[#be185d] opacity-90 shadow-md"
-        />
-      </div>
-
       {/* 1. Header Section (Clean Institutional Architecture - No Pill) */}
       <section className="pt-28 pb-10 sm:pt-32 sm:pb-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -136,7 +125,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
         </p>
 
         {/* Giant Headline */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-rose-200/80">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
           <div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black heading-serif text-[#0B1E48] tracking-tight leading-tight">
               Campus &amp; Facilities
@@ -148,15 +137,15 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
 
           {/* Quick Stats Badges */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-rose-200/80 text-xs font-bold text-slate-700 shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
               12-Acre Green Campus
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-rose-200/80 text-xs font-bold text-slate-700 shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-[#f59e0b]" />
               Smart Classrooms
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-rose-200/80 text-xs font-bold text-slate-700 shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-blue-600" />
               Olympic Sports Arena
             </span>
@@ -284,11 +273,11 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
       {/* ─── Architectural Section Divider Line & Badge ─── */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 relative z-10">
         <div className="relative flex items-center justify-center">
-          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-rose-300 via-amber-400/80 to-transparent shadow-xs" />
-          <div className="absolute px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-rose-200/90 shadow-[0_4px_20px_rgba(244,63,94,0.14)] flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-slate-800 select-none">
+          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-400/80 to-transparent shadow-xs" />
+          <div className="absolute px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-slate-800 select-none">
             <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b] shadow-[0_0_8px_#f59e0b] animate-pulse" />
             <span className="text-slate-900 font-black">CAMPUS VISITS &amp; TOURS</span>
-            <span className="text-rose-200 font-light">|</span>
+            <span className="text-slate-300 font-light">|</span>
             <span className="text-amber-600 font-black flex items-center gap-1.5">
               <span>EXPLORE TODAY</span>
               <ArrowRight className="w-3.5 h-3.5" />

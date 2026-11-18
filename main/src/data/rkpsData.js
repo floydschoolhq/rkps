@@ -1,14 +1,20 @@
 // Import media assets from shared repository
 import slide1Video from '@assets/slides/1.mp4';
-import slide2Img from '@assets/slides/2.png';
-import slide3Img from '@assets/slides/3.png';
-import slide4Img from '@assets/slides/4.png';
-import slide5Img from '@assets/slides/5.png';
-import principalImg from '@assets/principal.png';
-import directorImg from '@assets/director.png';
-import exteriorImg from '@assets/Radha Krishna Public School Exterior.png';
-import admissionsStudentsImg from '@assets/admissions_students.png';
+import slide2Img from '@assets/slides/2.webp';
+import slide3Img from '@assets/slides/3.webp';
+import slide4Img from '@assets/slides/4.webp';
+import slide5Img from '@assets/slides/5.webp';
+import principalImg from '@assets/principal.webp';
+import directorImg from '@assets/director.webp';
+import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
+import admissionsStudentsImg from '@assets/admissions_students.webp';
 import logoImg from '@assets/logo.jpg';
+import topper_anusha_pandey from '@assets/toppers/anusha-pandey.webp';
+import topper_vidhi_gaur from '@assets/toppers/vidhi-gaur.webp';
+import topper_pranav_pratap_singh from '@assets/toppers/pranav-pratap-singh.webp';
+import topper_himani_bhardwaj from '@assets/toppers/himani-bhardwaj.webp';
+import topper_aryan_yadav from '@assets/toppers/aryan-yadav.webp';
+import topper_ashu_sharma from '@assets/toppers/ashu-sharma.webp';
 
 export const SCHOOL_INFO = {
   name: "Radha Krishna Public School",
@@ -246,78 +252,81 @@ export const BEYOND_CLASSROOM_TABS = [
   }
 ];
 
+// Real RKPS results, taken from the "Subject Toppers (Xth) CBSE 2025" banner (assets/slides/3.png).
+// Photos are cropped from that banner into assets/toppers/. Add a student's own words in
+// `quote` only if they have actually given one; an empty quote is simply not shown.
 export const ALUMNI_TOPPERS = [
   {
-    id: "ananya",
-    name: "ANANYA SINGHAL",
-    classYear: "Class of 2024",
-    score: "98.8% CBSE XII",
-    stream: "Science Stream Topper",
-    highlight: "Admitted to IIT Delhi",
-    tenure: "RKPS Scholar Since Primary",
-    quote: "To get the most out of RKPS, stay curious in every lab and classroom! Our teachers pushed us to think deeply rather than memorize.",
-    story: "Ananya secured District Rank 1 with 98.8% in CBSE Class XII Science and earned admission to IIT Delhi. During her years at RKPS, she captained the Robotics & Science Guild and represented Ghaziabad at national STEM Olympiads.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDADta2QPOo3lnW1mvx810hecTNdLql6oRO5oIh_n_IPehzHiAxt2ZfORiPzfZd_qkphYVmc6cctoRVsyM8_vKrWXT_1_UbGetlgCcLIl2w5mfeb-jlgRtL52riGZP37bV0CJcunFfQYckNJ2lWllSs3-04u1Yvos4ox0cRsCy6YWKmZaI0M6uPwlt6ncekRw_rpaX8mPK5s0SHSsIVqdicBw3rHmbuKnLzZIPO58_dzrFtIpSWFFjtiw"
+    id: "anusha-pandey",
+    name: "ANUSHA PANDEY",
+    classYear: "CBSE Class X, 2025",
+    score: "98/100",
+    stream: "Subject Topper",
+    highlight: "Top in Science (98) & English (91)",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Anusha Pandey was the RKPS subject topper in Science and English in the CBSE Class X board examinations 2025, scoring 98/100 in Science and 91/100 in English.",
+    image: topper_anusha_pandey
   },
   {
-    id: "rohan",
-    name: "ROHAN AGRAWAL",
-    classYear: "Class of 2024",
-    score: "98.4% CBSE XII",
-    stream: "Commerce Stream Topper",
-    highlight: "SRCC (Delhi University) Selected",
-    tenure: "RKPS Scholar Since Sixth Grade",
-    quote: "Join debates, clubs, and sports alongside your board prep. The mentors at RKPS helped me discover both analytical rigor and leadership.",
-    story: "Scoring a perfect 100/100 in Accountancy and 98.4% overall, Rohan was selected for Shri Ram College of Commerce (SRCC), Delhi University. He led the RKPS Economics & Debate Society and played inter-school basketball.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBC3yncjklmzit2NMEQ5a_Xqqdb-InBGpDDglWjjJQXcnpO4djYwoDlgFYcFrpXfVliXioKItTnODfU5VhAIQBCwaa3HrC9hT3k4RKqIIiZJCwwidnXTIq1kR6prhd2ifxDZW3y0oXT0k0klY-SalrmPsHkRNycMOVwynl3ab95bAy_4TvxUYPYRi4TgmYkuKNMBZXSSZUArWe2jqgXlSNqvABIa2AMMafzJvsVnBwpxfQ1QepJTuASbw"
+    id: "vidhi-gaur",
+    name: "VIDHI GAUR",
+    classYear: "CBSE Class X, 2025",
+    score: "94/100",
+    stream: "Subject Topper",
+    highlight: "Top in Hindi",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Vidhi Gaur was the RKPS subject topper in Hindi in the CBSE Class X board examinations 2025, scoring 94/100.",
+    image: topper_vidhi_gaur
   },
   {
-    id: "meera",
-    name: "MEERA CHAWLA",
-    classYear: "Class of 2024",
-    score: "98.2% CBSE XII",
-    stream: "Humanities Stream Topper",
-    highlight: "St. Stephen's College Admitted",
-    tenure: "RKPS Scholar Since Nursery",
-    quote: "RKPS gave me the confidence to speak on national stages. The warmth of our faculty turns every challenge into an opportunity to grow.",
-    story: "Meera scored 100/100 in Political Science and 98.2% aggregate, securing admission to St. Stephen's College, University of Delhi. She served as School Head Girl and edited the annual RKPS literary chronicle.",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=700&q=80"
+    id: "pranav-pratap-singh",
+    name: "PRANAV PRATAP SINGH",
+    classYear: "CBSE Class X, 2025",
+    score: "96/100",
+    stream: "Subject Topper",
+    highlight: "Top in Social Science",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Pranav Pratap Singh was the RKPS subject topper in Social Science in the CBSE Class X board examinations 2025, scoring 96/100.",
+    image: topper_pranav_pratap_singh
   },
   {
-    id: "aditya",
-    name: "ADITYA TYAGI",
-    classYear: "Class of 2025",
-    score: "99.0% CBSE X",
-    stream: "Class X City Rank 1",
-    highlight: "100/100 Perfect Math Score",
-    tenure: "RKPS Scholar Since Fourth Grade",
-    quote: "Every doubt session and practical experiment in the STEM labs sharpened my problem-solving speed and love for mathematics.",
-    story: "An NTSE scholar who achieved 99.0% in Class X Boards with a perfect 100 in Mathematics and Science, Aditya leads the school's Atal Tinkering Lab innovation projects.",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=80"
+    id: "himani-bhardwaj",
+    name: "HIMANI BHARDWAJ",
+    classYear: "CBSE Class X, 2025",
+    score: "92/100",
+    stream: "Subject Topper",
+    highlight: "Top in IT / AI",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Himani Bhardwaj was the RKPS subject topper in IT / AI in the CBSE Class X board examinations 2025, scoring 92/100.",
+    image: topper_himani_bhardwaj
   },
   {
-    id: "kavya",
-    name: "KAVYA SHARMA",
-    classYear: "Class of 2023",
-    score: "97.8% CBSE XII",
-    stream: "Biology & NEET Merit",
-    highlight: "AIIMS New Delhi Scholar",
-    tenure: "RKPS Scholar Since Fifth Grade",
-    quote: "From biology dissections to compassionate community service drives, RKPS shaped both my scientific foundation and empathy as a future doctor.",
-    story: "Kavya topped the PCB wing with 97.8% and cleared NEET with an All-India top rank to pursue medicine at AIIMS. She actively volunteered in RKPS's environmental and rural literacy initiatives.",
-    image: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80"
+    id: "aryan-yadav",
+    name: "ARYAN YADAV",
+    classYear: "CBSE Class X, 2025",
+    score: "86/100",
+    stream: "Subject Topper",
+    highlight: "Top in Maths (Basic)",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Aryan Yadav was the RKPS subject topper in Mathematics (Basic) in the CBSE Class X board examinations 2025, scoring 86/100.",
+    image: topper_aryan_yadav
   },
   {
-    id: "siddharth",
-    name: "SIDDHARTH VERMA",
-    classYear: "Class of 2022",
-    score: "97.4% CBSE XII",
-    stream: "Computer Science & Athletics",
-    highlight: "DTU Computer Engineering",
-    tenure: "RKPS Scholar Since Eighth Grade",
-    quote: "Balancing district cricket tournaments with coding hackathons taught me discipline and teamwork that still guide me at university.",
-    story: "Siddharth excelled both on the cricket turf as team captain and in the computer science lab, earning admission to Delhi Technological University (DTU) in Computer Engineering.",
-    image: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=700&q=80"
+    id: "ashu-sharma",
+    name: "ASHU SHARMA",
+    classYear: "CBSE Class X, 2025",
+    score: "81/100",
+    stream: "Subject Topper",
+    highlight: "Top in Maths (Standard)",
+    tenure: "RKPS Subject Topper 2025",
+    quote: "",
+    story: "Ashu Sharma was the RKPS subject topper in Mathematics (Standard) in the CBSE Class X board examinations 2025, scoring 81/100.",
+    image: topper_ashu_sharma
   }
 ];
 
@@ -382,4 +391,29 @@ export const CAMPUS_STORIES = [
     tag: "Environment",
     img: exteriorImg
   }
+];
+
+// Student testimonial reels in /public/videos (portrait 9:16), used by the
+// "What's your story?" slider and the Students tab in "Reasons to soar".
+// TODO: replace the placeholder titles with each student's name or quote.
+export const STUDENT_VOICES = [
+  "20261004212448",
+  "20261004215809",
+  "20261004220635",
+  "20261004221458",
+  "20261004222631"
+].map((stamp, i) => ({
+  title: `Student Story ${String(i + 1).padStart(2, "0")}`,
+  src: `/videos/lv_0_${stamp}.mp4`,
+  poster: `/videos/lv_0_${stamp}.jpg`
+}));
+
+// Cards for the "Beyond the classroom" facts slider (SAS panel-5 .facts-slider).
+export const BEYOND_FACTS = [
+  { kicker: "STEM", title: "Atal Tinkering Lab", desc: "Hands-on building, coding and robotics that turn textbook principles into working projects." },
+  { kicker: "Athletics", title: "Sports & Yoga", desc: "Daily physical education, yoga and an annual sports championship for every age group." },
+  { kicker: "Performing Arts", title: "Music & Dance", desc: "Vocal, instrumental and classical dance training that builds stage confidence." },
+  { kicker: "Creative Arts", title: "Art & Craft", desc: "Studio time for drawing, painting and craft that nurtures imagination and fine motor skills." },
+  { kicker: "Mental Maths", title: "Abacus & Vedic Maths", desc: "Speed-calculation methods that sharpen concentration and number sense." },
+  { kicker: "Experiential", title: "Field Trips & Planetarium", desc: "Regional excursions, planetarium visits and botanical study that take learning outdoors." }
 ];

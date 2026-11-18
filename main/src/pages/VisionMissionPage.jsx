@@ -1,8 +1,8 @@
 import React from 'react';
 import { Target, Compass, Sparkles, Award, Heart, BookOpen, ShieldCheck, Globe, Users, ArrowRight, Quote, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import directorImg from '@assets/director.png';
-import principalImg from '@assets/principal.png';
+import directorImg from '@assets/director.webp';
+import principalImg from '@assets/principal.webp';
 
 export default function VisionMissionPage({ onOpenAdmission }) {
   const values = [

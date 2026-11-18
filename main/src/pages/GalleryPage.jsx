@@ -2,119 +2,71 @@ import React, { useState } from 'react';
 import { Eye, X, Compass, ArrowRight, Camera } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import AccordionGallery from '../components/AccordionGallery';
+import { STUDENT_VOICES } from '../data/rkpsData';
+import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
+import slide2Img from '@assets/slides/2.webp';
+import slide3Img from '@assets/slides/3.webp';
+import slide4Img from '@assets/slides/4.webp';
+import slide5Img from '@assets/slides/5.webp';
 
+// Real RKPS photos only. Add new ones by importing them from src/assets.
 const galleryPhotos = [
   {
     id: 1,
-    title: 'Modern Architecture & Green Campus',
+    title: 'RKPS Campus, Lal Kuan',
     category: 'campus',
     categoryLabel: 'Campus & Infrastructure',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/founnew2.jpg',
-    desc: 'Sprawling lush green campus designed for optimal natural lighting and safety.'
+    image: exteriorImg,
+    desc: 'The main school building on NH-9, Lal Kuan, Ghaziabad.'
   },
   {
     id: 2,
-    title: 'Grand Central Knowledge Library',
+    title: 'Pre-Primary Play Area',
     category: 'campus',
     categoryLabel: 'Campus & Infrastructure',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner2.jpg',
-    desc: 'Quiet reading chambers with over 20,000 academic titles and digital research carrels.'
+    image: slide2Img,
+    desc: 'Our youngest learners enjoying the outdoor play area.'
   },
   {
     id: 3,
-    title: 'Senior Academic Wing & Corridors',
-    category: 'campus',
-    categoryLabel: 'Campus & Infrastructure',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner3.jpg',
-    desc: 'Ergonomic, digitized classrooms with interactive touch panels for collaborative learning.'
+    title: 'CBSE Class X Subject Toppers 2025',
+    category: 'academics',
+    categoryLabel: 'Academics',
+    image: slide3Img,
+    desc: 'Celebrating our subject toppers in the CBSE Class X board examinations, 2025.'
   },
   {
     id: 4,
-    title: 'AI, Robotics & STEM Innovation Hub',
-    category: 'academics',
-    categoryLabel: 'Science & Innovation',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner7.jpg',
-    desc: 'Hands-on experimentation with IoT sensors, Arduino robotics, and 3D prototyping.'
+    title: 'Award Winners & Their Trophies',
+    category: 'sports',
+    categoryLabel: 'Sports & Achievements',
+    image: slide4Img,
+    desc: 'Students with the trophies and medals they brought home for RKPS.'
   },
   {
     id: 5,
-    title: 'Olympic-Standard Sports Complex',
-    category: 'sports',
-    categoryLabel: 'Sports & Athletics',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner5.jpg',
-    desc: 'Cricket coaching nets, synthetic basketball academy, football turf, and athletics track.'
-  },
-  {
-    id: 6,
-    title: '1,200-Seat Performing Arts Auditorium',
+    title: "Teacher's Day Honours 2025",
     category: 'cultural',
-    categoryLabel: 'Cultural & Arts',
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner1.jpg',
-    desc: 'Acoustically treated multi-tier auditorium for theatrical drama, music, and annual fests.'
+    categoryLabel: 'Cultural & Events',
+    image: slide5Img,
+    desc: "Guests and faculty on stage at the Teacher's Day Rashtriya Puraskar Samman Samaroh."
   },
-  {
-    id: 7,
-    title: 'Annual Athletic Championship Meet',
-    category: 'sports',
-    categoryLabel: 'Sports & Athletics',
-    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
-    desc: 'Students competing in inter-house sprint relays, high jumps, and championship sports.'
-  },
-  {
-    id: 8,
-    title: 'Inter-School Science Exhibition & Hackathon',
-    category: 'academics',
-    categoryLabel: 'Science & Innovation',
-    image: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1200&q=80',
-    desc: 'Innovative student prototypes addressing environmental conservation and smart city models.'
-  },
-  {
-    id: 9,
-    title: 'Vibrant Annual Cultural & Dance Festival',
-    category: 'cultural',
-    categoryLabel: 'Cultural & Arts',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=80',
-    desc: 'Traditional classical dances, symphony orchestra performances, and vibrant stage plays.'
-  }
+  ...STUDENT_VOICES.slice(0, 4).map((v, i) => ({
+    id: 6 + i,
+    title: 'Student Voices',
+    category: 'campus',
+    categoryLabel: 'Student Life',
+    image: v.poster,
+    desc: 'Our students sharing what RKPS means to them.'
+  }))
 ];
 
 const featuredAccordionItems = [
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/founnew2.jpg',
-    label: 'Foundation Wing',
-    alt: 'Foundation Wing',
-    link: '#gallery-grid'
-  },
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner2.jpg',
-    label: 'Central Library',
-    alt: 'Central Library',
-    link: '#gallery-grid'
-  },
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner3.jpg',
-    label: 'Senior Wing',
-    alt: 'Senior Wing',
-    link: '#gallery-grid'
-  },
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner7.jpg',
-    label: 'Robotics & STEM Lab',
-    alt: 'Robotics and STEM Lab',
-    link: '#gallery-grid'
-  },
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner5.jpg',
-    label: 'Olympic Sports Arena',
-    alt: 'Olympic Sports Arena',
-    link: '#gallery-grid'
-  },
-  {
-    image: 'https://khaitanpublicschool.com/wp-content/uploads/2025/12/homeinner1.jpg',
-    label: 'Performing Arts Auditorium',
-    alt: 'Performing Arts Auditorium',
-    link: '#gallery-grid'
-  }
+  { image: exteriorImg, label: 'Our Campus', alt: 'RKPS school building', link: '#gallery-grid' },
+  { image: slide2Img, label: 'Early Years', alt: 'Pre-primary students in the play area', link: '#gallery-grid' },
+  { image: slide4Img, label: 'Achievers', alt: 'Students holding trophies', link: '#gallery-grid' },
+  { image: slide5Img, label: "Teacher's Day", alt: "Teacher's Day honours on stage", link: '#gallery-grid' },
+  { image: slide3Img, label: 'Board Toppers', alt: 'CBSE Class X subject toppers 2025', link: '#gallery-grid' }
 ];
 
 export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {

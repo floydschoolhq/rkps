@@ -259,6 +259,15 @@
   }
 }
 
+/* GSAP (useInView) owns opacity/transform inside flagged sections; keep only non-motion transitions. */
+[data-gsap-reveal] .sas-reveal-up,
+[data-gsap-reveal] .sas-reveal-down,
+[data-gsap-reveal] .sas-reveal-left,
+[data-gsap-reveal] .sas-reveal-right,
+[data-gsap-reveal] .sas-reveal-swoop {
+  transition-property: color, background-color, border-color, box-shadow;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .sas-reveal-up,
   .sas-reveal-down,
@@ -268,5 +277,26 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+}
+
+/* SplitText word masks: pad the clip box so tight Bebas line-heights don't crop the caps. */
+.split-word-mask {
+  padding-block: 0.1em;
+  margin-block: -0.1em;
+}
+
+/* Hide scrollbars on swipe tracks (SnapSlider, TabStrip) while keeping them scrollable. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* TabStrip: below lg, tabs stay on one line instead of shrinking or wrapping. */
+@media (max-width: 1023.98px) {
+  .tab-strip > * {
+    flex-shrink: 0;
   }
 }

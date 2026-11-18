@@ -1,7 +1,7 @@
 import React from 'react';
 import { Quote, CheckCircle2, Mail, ArrowRight, ChevronRight, Award, ShieldCheck, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import principalImg from '@assets/principal.png';
+import principalImg from '@assets/principal.webp';
 
 export default function PrincipalsDeskPage({ onOpenAdmission }) {
   return (

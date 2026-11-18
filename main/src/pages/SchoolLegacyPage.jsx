@@ -1,7 +1,7 @@
 import React from 'react';
 import { Award, Calendar, CheckCircle2, Milestone, ShieldCheck, Sparkles, Building2, GraduationCap, Users, ArrowRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import schoolExteriorImg from '@assets/Radha Krishna Public School Exterior.png';
+import schoolExteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
 
 export default function SchoolLegacyPage({ onOpenAdmission }) {
   const milestones = [

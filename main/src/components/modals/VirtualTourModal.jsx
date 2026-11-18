@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Eye, Sparkles } from 'lucide-react';
+import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
+import slide2Img from '@assets/slides/2.webp';
+import slide4Img from '@assets/slides/4.webp';
+import slide5Img from '@assets/slides/5.webp';
 
+// Each stop shows a real RKPS photo and describes only what that photo shows.
 const tourSpots = [
   {
     title: 'School Campus & Transport Fleet',
     category: 'Campus Grounds',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCkNW3umzMyBB0D-OKTmTGmg11eQ_LRoUIIE233XVxKg8P1wpRHu9QqikuGdOvOdf68Cp3gzZ7Z5DUuTGEYuPwjP-Z8Tm39d3tntcezXaCi1vxsiOoCOv0k0yZgeUshbkH0qzCG1nO4t6xx2wPSPB7AN5SAIWvma1dmnspO5A1Ccb1XVnq9XJD7o6U6f_mR6C7VOC0ZdHGn2TTS-Lo9qz-9dfXdl0GbyWC05PJVomZo6m9g-mRBbCpfhQ',
+    image: exteriorImg,
     description: 'Sprawling campus grounds with secure gated entry, GPS-monitored fleet of air-conditioned school buses covering all major routes across Ghaziabad, Noida, and East Delhi.'
   },
   {
-    title: 'Grand Central Library & Digital Hub',
-    category: 'Academic Sanctuary',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCHxs-fv2VWuLUPllKQK1ZM_RUm00mjzXZsbroGND5b52EvI_URqkRy3qfk0KzaGUhlXl_SxpOSTG-ONJswFHXMHCCTXqM6V84U5SVkDmFqxFMqszkp57rQod4dnsLF8Qy7JTUXosoH48VQ5v5PuYnoT-FImlshqah0ZRsN19ky7McoBWrekaSS56sJFQLbF8eOsAy1l4r3_omznpOyX2qbv6LQgaw1E3ZERtPbV6WdDBQd-L-KkCNhfg',
-    description: 'Double-height quiet reading gallery featuring 20,000+ reference volumes, Kindle e-book terminals, national periodicals, and dedicated research stations.'
+    title: 'Pre-Primary Play Area',
+    category: 'Early Years',
+    image: slide2Img,
+    description: 'Colourful outdoor play equipment where our youngest learners build confidence, balance, and friendships.'
   },
   {
-    title: 'Shri Radha Krishna Multipurpose Auditorium',
+    title: 'Events & Celebrations',
     category: 'Performing Arts & Culture',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDCrKdJ_ZqjF2KyrEzZZOip394XRDO7PqKDpA7385hdxpSw547VKQTXfIpwu5HBQ5gUe0rTSuP9wG2gFknZ6XU47HSvUEuNzGdmaismAo5_oP1aK8jEtVrVd90IKE337Q7vAE7wieQgvMN8TOkLmNRUV6vtr1mf4bB1YXk2-Gztkhd5Iq00ijmlL08pedqGPvOgMBiFwy4jNlRU0Fy4hek7ReXI1EBruvIy-nMbqHBJWhTuA_TUTrwspQ',
-    description: 'Centrally air-conditioned 1,200 seat theater with proscenium stage, motorized spotlights, and state-of-the-art acoustics for national MUNs and annual cultural productions.'
+    image: slide5Img,
+    description: "Our stage hosts assemblies, annual functions and honours such as the Teacher's Day Rashtriya Puraskar Samman Samaroh 2025."
   },
   {
-    title: 'Advanced Science Research Suites',
-    category: 'STEM Innovation',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5wVZ5a_9hK9wmSqLAsw5F5Z1cR8i7vo9QwBJDcDqTUQoC_NkjIHIYlZsqlIMouMLScwT1FUM6bvKwoWYL9S-YeynHB1r-bDYuG7z5nyz8clQcOkae9DUUrqIVnqN2Hm8JWENXVhd_loZu2LxK3Zr5tO3uw9k9pn5ezUwT2XH7HwhuF5T7nylBTeNUWyMHrKIKTaskQHna_KDogxyhWUMumarlpwL9rOrGd-NaME4vmv41xn5QsvZ7xQ',
-    description: 'Separate well-equipped laboratories for Physics, Chemistry, Biology, and AI Robotics fostering deep practical discovery and scientific acumen.'
+    title: 'Our Achievers',
+    category: 'Sports & Competitions',
+    image: slide4Img,
+    description: 'Students with the trophies and medals they have won for RKPS in competitions and championships.'
   }
 ];
 

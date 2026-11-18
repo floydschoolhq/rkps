@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { ALUMNI_TOPPERS, PARENT_TESTIMONIALS } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
+import TabStrip from './ui/TabStrip';
+import Portrait from './ui/Portrait';
 import { ChevronLeft, ChevronRight, Star, X, Award } from 'lucide-react';
 
 /**
@@ -94,7 +96,12 @@ export default function PreparedForFuture() {
 
         {/* 2. Exact SAS Rectangular Light-Gray Tab Bar (flush above the full-bleed carousel) */}
         <div style={{ transitionDelay: '120ms' }} className="sas-reveal-up mt-10 flex justify-center">
-          <div className="inline-flex flex-wrap items-center justify-center bg-[#e5e5e5] px-2 sm:px-5 py-3.5">
+          <TabStrip
+            activeIndex={activeTab === 'alumni' ? 0 : 1}
+            fadeClass="from-[#e5e5e5]"
+            wrapperClassName="max-w-full min-w-0"
+            className="inline-flex flex-wrap items-center justify-center bg-[#e5e5e5] px-2 sm:px-5 py-3.5 max-lg:max-w-full max-lg:justify-start"
+          >
             <button
               onClick={() => setActiveTab('alumni')}
               className={`px-4 sm:px-6 py-1 text-[11px] sm:text-[13px] font-extrabold tracking-wider uppercase border-r border-[#c8c8c8] transition-colors duration-300 cursor-pointer ${
@@ -103,7 +110,7 @@ export default function PreparedForFuture() {
                   : 'text-[#131313] hover:text-[#a22634]'
               }`}
             >
-              GRADUATES AND ALUMNI PROFILE
+              CBSE 2025 SUBJECT TOPPERS
             </button>
             <button
               onClick={() => setActiveTab('parents')}
@@ -115,7 +122,7 @@ export default function PreparedForFuture() {
             >
               PARENT VOICES & BOARD NUMBERS
             </button>
-          </div>
+          </TabStrip>
         </div>
       </div>
 
@@ -160,10 +167,11 @@ export default function PreparedForFuture() {
                     className={`${visibilityClass} relative shrink-0 w-[86vw] sm:w-[68vw] md:w-[31.5vw] lg:w-[24.8vw] max-w-[380px] aspect-[344/510] max-h-[560px] bg-[#131313] overflow-hidden group cursor-pointer select-none`}
                   >
                     {/* Full-Bleed Portrait Image */}
-                    <img
+                    <Portrait
                       src={scholar.image}
-                      alt={scholar.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-500 ease-sas group-hover:scale-105"
+                      name={scholar.name}
+                      imgClassName="w-full h-full object-cover object-top transition-transform duration-500 ease-sas group-hover:scale-105"
+                      className="pb-24"
                     />
 
                     {/* Default Bottom Gradient Scrim */}
@@ -194,9 +202,9 @@ export default function PreparedForFuture() {
                         {/* Crimson Horizontal Rule */}
                         <span className="w-16 h-[2px] bg-[#a22634] my-4 block" />
 
-                        {/* Student Quote */}
+                        {/* Student Quote (only when the student has given one), else the factual summary */}
                         <p className="text-xs sm:text-[13.5px] text-white/90 leading-relaxed font-normal max-w-[260px]">
-                          {scholar.quote}
+                          {scholar.quote || scholar.story}
                         </p>
 
                         {/* Subtle Divider */}
@@ -316,10 +324,10 @@ export default function PreparedForFuture() {
 
             {/* Left Portrait */}
             <div className="md:col-span-5 aspect-[4/5] md:aspect-auto bg-[#071f4c] relative">
-              <img
+              <Portrait
                 src={activeProfile.image}
-                alt={activeProfile.name}
-                className="w-full h-full object-cover object-top"
+                name={activeProfile.name}
+                imgClassName="w-full h-full object-cover object-top"
               />
               <div className="absolute bottom-4 left-4 bg-[#faba28] text-[#071f4c] font-bebas text-sm px-3 py-1 tracking-wider uppercase shadow">
                 {activeProfile.score}
@@ -340,9 +348,11 @@ export default function PreparedForFuture() {
                   <span>{activeProfile.highlight}</span>
                 </div>
 
-                <blockquote className="mt-5 pl-4 border-l-4 border-[#faba28] text-sm text-slate-700 italic leading-relaxed">
-                  "{activeProfile.quote}"
-                </blockquote>
+                {activeProfile.quote && (
+                  <blockquote className="mt-5 pl-4 border-l-4 border-[#faba28] text-sm text-slate-700 italic leading-relaxed">
+                    "{activeProfile.quote}"
+                  </blockquote>
+                )}
 
                 <p className="mt-4 text-sm text-slate-600 leading-relaxed">
                   {activeProfile.story}

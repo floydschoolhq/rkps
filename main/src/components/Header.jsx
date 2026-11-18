@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ScrollTrigger } from '../lib/gsap';
 import {
   User,
   Search,
@@ -44,6 +45,7 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
   const isHome = location.pathname === '/';
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeCategoryId, setActiveCategoryId] = useState('about');
   const [mobileExpandedId, setMobileExpandedId] = useState('about');
@@ -54,12 +56,27 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
   const portalsRef = useRef(null);
   const searchInputRef = useRef(null);
 
-  // Scroll listener matching SAS fixed-header transition
+  // SAS-style smart sticky header: the bar turns solid after 40px, hides while
+  // scrolling down past HIDE_AFTER, and comes back as soon as the user scrolls up.
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 40);
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const HIDE_AFTER = 220; // header height + 150px, as on SAS
+    const DELTA = 6; // ignore tiny wheel/trackpad jitter
+    let last = window.scrollY;
+
+    const st = ScrollTrigger.create({
+      start: 0,
+      end: 'max',
+      onUpdate: () => {
+        const y = window.scrollY;
+        setIsScrolled(y > 40);
+        if (Math.abs(y - last) < DELTA) return;
+        setIsHidden(y > HIDE_AFTER && y > last);
+        last = y;
+      },
+    });
+    setIsScrolled(window.scrollY > 40);
+
+    return () => st.kill();
   }, []);
 
   // Close all overlays on route change
@@ -157,6 +174,8 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
       {/* 1. Global Header Bar (SAS cubic-bezier(0.34, 0.615, 0.4, 0.985) sticky transition) */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-sas ${
+          isHidden && !menuOpen && !searchOpen && !portalsOpen ? '-translate-y-full' : 'translate-y-0'
+        } ${
           solidHeader
             ? 'bg-white shadow-[0_4px_18px_rgba(0,0,0,0.08)] text-[#2b2b2b] py-2.5'
             : 'bg-gradient-to-b from-black/75 via-black/35 to-transparent text-white py-3.5 sm:py-4'
@@ -164,32 +183,32 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Left: School Crest & Institutional Identity */}
-          <Link to="/" className="flex items-center gap-3 group shrink-0">
+          <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group min-w-0">
             <img
               src={logoImg}
               alt="Radha Krishna Public School"
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-[#f0b429] object-cover shadow-sm group-hover:scale-105 transition-transform duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 shrink-0 rounded-full border-2 border-[#f0b429] object-cover shadow-sm group-hover:scale-105 transition-transform duration-300"
             />
-            <div className="flex flex-col">
+            <div className="flex flex-col min-w-0">
               <span
-                className={`font-bebas text-lg sm:text-2xl tracking-wider leading-none transition-colors duration-300 ${
+                className={`font-bebas text-lg leading-[0.95] max-sm:max-w-[9.5em] sm:text-xl sm:truncate sm:leading-none lg:text-2xl lg:leading-none tracking-wider transition-colors duration-300 ${
                   solidHeader ? 'text-[#0b2a63]' : 'text-white'
                 }`}
               >
                 RADHA KRISHNA PUBLIC SCHOOL
               </span>
               <span
-                className={`text-[10px] sm:text-xs font-bold tracking-wider uppercase transition-colors duration-300 mt-0.5 ${
+                className={`text-[10px] sm:text-xs font-bold tracking-wider uppercase transition-colors duration-300 mt-0.5 truncate ${
                   solidHeader ? 'text-[#a22634]' : 'text-[#faba28]'
                 }`}
               >
-                Est. 2004 • CBSE Affiliation #2132212
+                Est. 2004 • CBSE<span className="hidden lg:inline"> Affiliation #2132212</span>
               </span>
             </div>
           </Link>
 
           {/* Right Action Controls (Matching SAS Header: Portals, Search, Apply, Circular MENU ☰) */}
-          <div className="flex items-center gap-2 sm:gap-3.5">
+          <div className="flex items-center gap-2 sm:gap-3.5 shrink-0">
             {/* Portals Dropdown */}
             <div className="relative hidden md:block" ref={portalsRef}>
               <button
@@ -265,7 +284,7 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
                 setPortalsOpen(false);
                 setMenuOpen(true);
               }}
-              className={`flex items-center gap-2.5 pl-3.5 pr-1.5 py-1.5 rounded-full border transition-all duration-300 cursor-pointer group ${
+              className={`flex items-center gap-2.5 pl-1.5 sm:pl-3.5 pr-1.5 py-1.5 rounded-full border transition-all duration-300 cursor-pointer group ${
                 solidHeader
                   ? 'border-[#0b2a63] text-[#0b2a63] hover:bg-[#0b2a63]/5'
                   : 'border-white/45 text-white hover:bg-white/15'
@@ -273,7 +292,7 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
               aria-label="Open Navigation Menu"
               aria-expanded={menuOpen}
             >
-              <span className="text-xs font-extrabold tracking-widest uppercase">MENU</span>
+              <span className="hidden sm:inline text-xs font-extrabold tracking-widest uppercase">MENU</span>
               <span className="w-8 h-8 rounded-full bg-[#0b2a63] group-hover:bg-[#a22634] text-white flex items-center justify-center transition-colors duration-300">
                 <Menu className="w-4 h-4" />
               </span>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LEARNING_STAGES } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
+import TabStrip from './ui/TabStrip';
 import { CheckCircle2, ArrowRight, FileText } from 'lucide-react';
 
 export default function LearningStages({ onOpenAdmission }) {
@@ -24,9 +25,10 @@ export default function LearningStages({ onOpenAdmission }) {
           </h2>
 
           {/* 4 Horizontal Division Tabs */}
-          <div
-            style={{ transitionDelay: '180ms' }}
-            className="sas-reveal-left mt-6 flex flex-wrap gap-3 sm:gap-8 border-b border-slate-200 pb-3"
+          <TabStrip
+            activeIndex={activeStageIdx}
+            wrapperClassName="sas-reveal-left mt-6"
+            className="flex flex-wrap gap-5 sm:gap-8 border-b border-slate-200 pb-3 max-lg:pb-4"
           >
             {LEARNING_STAGES.map((stg, idx) => (
               <button
@@ -44,7 +46,7 @@ export default function LearningStages({ onOpenAdmission }) {
                 )}
               </button>
             ))}
-          </div>
+          </TabStrip>
         </div>
 
         {/* Content Split: Left Stage Details + Right Organic Swooping Photo */}

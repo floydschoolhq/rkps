@@ -1,7 +1,7 @@
 import React from 'react';
 import { Quote, CheckCircle2, Mail, ArrowRight, ChevronRight, Landmark, ShieldCheck, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import directorImg from '@assets/director.png';
+import directorImg from '@assets/director.webp';
 
 export default function DirectorsDeskPage({ onOpenAdmission }) {
   return (

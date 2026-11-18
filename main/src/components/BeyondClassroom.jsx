@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { BEYOND_CLASSROOM_TABS } from '../data/rkpsData';
+import { BEYOND_CLASSROOM_TABS, BEYOND_FACTS } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
 import { ChevronRight } from 'lucide-react';
+import TabStrip from './ui/TabStrip';
+import SnapSlider from './ui/SnapSlider';
 
 const TAB_ROUTES = ['/gallery', '/facilities#labs', '/vision-mission'];
 
@@ -23,7 +25,12 @@ export default function BeyondClassroom({ onNavigateAction }) {
         {/* Top Header Row: Tabs Slide From Left + Heading Slides From Right (Exact SAS .panel-4) */}
         <div className="flex flex-col-reverse lg:flex-row items-start lg:items-end justify-between gap-6 border-b border-white/15 pb-6">
           {/* Left: 3 Tabs with Active Gold Underline */}
-          <div className="sas-reveal-left flex flex-wrap items-center gap-6 sm:gap-8">
+          <TabStrip
+            activeIndex={activeTabIdx}
+            tone="dark"
+            wrapperClassName="sas-reveal-left w-full lg:w-auto"
+            className="flex flex-wrap items-center gap-6 sm:gap-8 max-lg:pb-[26px] max-lg:-mb-6"
+          >
             {BEYOND_CLASSROOM_TABS.map((tab, idx) => (
               <button
                 key={tab.id}
@@ -38,7 +45,7 @@ export default function BeyondClassroom({ onNavigateAction }) {
                 )}
               </button>
             ))}
-          </div>
+          </TabStrip>
 
           {/* Right: Multi-Line Display Title */}
           <div style={{ transitionDelay: '180ms' }} className="sas-reveal-right text-left lg:text-right">
@@ -106,6 +113,25 @@ export default function BeyondClassroom({ onNavigateAction }) {
             </div>
           </div>
         </div>
+
+        {/* Facts slider (SAS panel-5 .facts-slider): 3 up on desktop, swipe on mobile */}
+        <SnapSlider
+          label="Beyond the classroom highlights"
+          tone="dark"
+          className="sas-reveal-up mt-16 lg:mt-24"
+          itemClassName="basis-[82%] sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]"
+        >
+          {BEYOND_FACTS.map((fact) => (
+            <article
+              key={fact.title}
+              className="h-full rounded-xl border border-white/10 bg-white/[0.05] p-6 sm:p-7 border-t-4 border-t-[#faba28] hover:bg-white/[0.09] transition-colors duration-300"
+            >
+              <span className="text-[11px] font-extrabold tracking-[0.2em] uppercase text-[#faba28]">{fact.kicker}</span>
+              <h3 className="mt-2 font-bebas text-3xl tracking-wide uppercase leading-tight text-white">{fact.title}</h3>
+              <p className="mt-3 text-sm text-white/75 leading-relaxed">{fact.desc}</p>
+            </article>
+          ))}
+        </SnapSlider>
       </div>
     </section>
   );

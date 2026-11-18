@@ -1,4 +1,5 @@
 import React from 'react';
+import IntroLoader from '../components/IntroLoader';
 import Hero from '../components/Hero';
 import CorePillars from '../components/CorePillars';
 import WhyChooseRkps from '../components/WhyChooseRkps';
@@ -16,6 +17,7 @@ export default function HomePage({ onNavigateAction, onOpenAdmission, onOpenVisi
 
   return (
     <>
+      <IntroLoader />
       <Hero
         onNavigateAction={onNavigateAction}
         onScrollToStages={scrollToStages}
