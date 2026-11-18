@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0b2a63;
+  --navy-dark: #071f4c;
+  --navy-deep: #052051;
+  --navy-menu: #072761;
+  --red: #9b2335;
+  --red-sas: #a22634;
+  --red-dark: #7a1f2b;
+  --gold: #f0b429;
+  --gold-light: #faba28;
+  --bg: #ffffff;
+  --alt: #f6f6f6;
+  --tx: #2b2b2b;
+  --mu: #666666;
+  --sas-ease: cubic-bezier(0.34, 0.615, 0.4, 0.985);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+
+  body {
+    font-family: 'DM Sans', Arial, sans-serif;
+    color: var(--tx);
+    background-color: var(--bg);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-bebas {
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    letter-spacing: 0.03em;
+  }
+
+  .heading-serif {
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* =========================================================
+   SAS SIGNATURE KEYFRAMES & TRANSITIONS
+   Easing: cubic-bezier(0.34, 0.615, 0.4, 0.985)
+   ========================================================= */
+
+@keyframes sasMarquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes sasFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sasScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes sasSlideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-48px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sasSlideFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(48px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sasSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sasSwoopPhoto {
+  0% {
+    opacity: 0;
+    transform: translate(32px, -18px) rotate(5deg) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes sasHeroZoom {
+  0% {
+    transform: scale(1.06);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@layer utilities {
+  .watermark-shield {
+    background-image: radial-gradient(circle, rgba(11, 42, 99, 0.05) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+
+  .watermark-shield-dark {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1.5px, transparent 1.5px);
+    background-size: 20px 20px;
+  }
+
+  /* Compatibility utilities for ported subpages */
+  .bg-ravensbourne-dots {
+    background-image:
+      radial-gradient(circle, rgba(155, 35, 53, 0.16) 2px, transparent 2.1px),
+      radial-gradient(circle, rgba(11, 42, 99, 0.12) 2px, transparent 2.1px);
+    background-size: 26px 26px;
+    background-position: 0 0, 13px 13px;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+  }
+
+  /* Marquee */
+  .animate-marquee {
+    display: flex;
+    width: max-content;
+    animation: sasMarquee 32s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  /* Modal & tab transition utilities */
+  .animate-fadeIn {
+    animation: sasFadeIn 0.35s var(--sas-ease) forwards;
+  }
+
+  .animate-scaleUp {
+    animation: sasScaleUp 0.4s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-slide-left {
+    animation: sasSlideFromLeft 0.65s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-slide-right {
+    animation: sasSlideFromRight 0.65s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-slide-up {
+    animation: sasSlideUp 0.65s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-swoop {
+    animation: sasSwoopPhoto 0.7s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-hero-zoom {
+    animation: sasHeroZoom 6.5s ease-out forwards;
+  }
+
+  /* SAS easing class */
+  .ease-sas {
+    transition-timing-function: cubic-bezier(0.34, 0.615, 0.4, 0.985);
+  }
+
+  /* SAS .in-view scroll-reveal primitives */
+  .sas-reveal-up {
+    opacity: 0;
+    transform: translateY(48px);
+    transition: opacity 0.77s var(--sas-ease), transform 0.77s var(--sas-ease);
+  }
+  .sas-in-view .sas-reveal-up,
+  .sas-reveal-up.sas-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sas-reveal-down {
+    opacity: 0;
+    transform: translateY(-36px);
+    transition: opacity 0.7s var(--sas-ease), transform 0.7s var(--sas-ease);
+  }
+  .sas-in-view .sas-reveal-down,
+  .sas-reveal-down.sas-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sas-reveal-left {
+    opacity: 0;
+    transform: translateX(-64px);
+    transition: opacity 0.7s var(--sas-ease), transform 0.7s var(--sas-ease);
+  }
+  .sas-in-view .sas-reveal-left,
+  .sas-reveal-left.sas-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .sas-reveal-right {
+    opacity: 0;
+    transform: translateX(64px);
+    transition: opacity 0.7s var(--sas-ease), transform 0.7s var(--sas-ease);
+  }
+  .sas-in-view .sas-reveal-right,
+  .sas-reveal-right.sas-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .sas-reveal-swoop {
+    opacity: 0;
+    transform: translate(40px, 32px) rotate(-8deg) scale(0.95);
+    transition: opacity 0.75s var(--sas-ease), transform 0.75s var(--sas-ease);
+  }
+  .sas-in-view .sas-reveal-swoop,
+  .sas-reveal-swoop.sas-visible {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sas-reveal-up,
+  .sas-reveal-down,
+  .sas-reveal-left,
+  .sas-reveal-right,
+  .sas-reveal-swoop {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
