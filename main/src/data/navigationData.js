@@ -5,6 +5,7 @@
 
 export const MENU_TOP_BAR = [
   { label: 'CBSE Disclosure & Downloads', to: '/downloads', icon: 'ShieldCheck' },
+  { label: "What's New", action: 'whats-new', icon: 'Bell' },
   { label: 'Apply Online 2026–27', action: 'admission', icon: 'Sparkles' }
 ];
 

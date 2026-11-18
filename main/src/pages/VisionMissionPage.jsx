@@ -1,8 +1,8 @@
 import React from 'react';
 import { Target, Compass, Sparkles, Award, Heart, BookOpen, ShieldCheck, Globe, Users, ArrowRight, Quote, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import directorImg from '@assets/director.webp';
-import principalImg from '@assets/principal.webp';
+import directorImg from '@assets/photos/director.webp';
+import principalImg from '@assets/photos/principal-rupa-tyagi.webp';
 
 export default function VisionMissionPage({ onOpenAdmission }) {
   const values = [
@@ -202,7 +202,7 @@ export default function VisionMissionPage({ onOpenAdmission }) {
                 <img
                   src={principalImg}
                   alt="Dr. Rupa Tyagi"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[50%_70%]"
                 />
                 <span className="absolute bottom-2 left-2 right-2 bg-black/75 backdrop-blur-xs text-white text-[10px] font-bold text-center py-0.5 rounded uppercase">
                   Principal

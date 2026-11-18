@@ -1,13 +1,13 @@
 // Import media assets from shared repository
 import slide1Video from '@assets/slides/1.mp4';
-import slide2Img from '@assets/slides/2.webp';
+import slide2Img from '@assets/photos/play-area.webp';
 import slide3Img from '@assets/slides/3.webp';
-import slide4Img from '@assets/slides/4.webp';
+import slide4Img from '@assets/photos/trophy-winners.webp';
 import slide5Img from '@assets/slides/5.webp';
-import principalImg from '@assets/principal.webp';
-import directorImg from '@assets/director.webp';
+import principalImg from '@assets/photos/principal-rupa-tyagi.webp';
+import directorImg from '@assets/photos/director.webp';
 import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
-import admissionsStudentsImg from '@assets/admissions_students.webp';
+import admissionsStudentsImg from '@assets/photos/students-smiling.webp';
 import logoImg from '@assets/logo.jpg';
 import topper_anusha_pandey from '@assets/toppers/anusha-pandey.webp';
 import topper_vidhi_gaur from '@assets/toppers/vidhi-gaur.webp';
@@ -22,7 +22,7 @@ export const SCHOOL_INFO = {
   founded: "2004",
   yearsOfExcellence: "20+",
   affiliation: "Affiliated to CBSE, New Delhi (Affiliation Code: 2132212 / 2130572)",
-  principal: "Ms. Monika Sharma",
+  principal: "Dr. Rupa Tyagi",
   director: "Dr. Satish Yadav",
   campusAddresses: [
     {
@@ -108,7 +108,7 @@ export const WHY_CHOOSE_TABS = [
     tag: "EDUCATORS",
     kicker: "OUR EDUCATORS",
     title: "TEACHERS WHO RAISE THE STANDARD",
-    desc: "Led by Principal Ms. Monika Sharma, RKPS teachers focus on the academic growth and holistic well-being of every child through dedicated classroom mentoring and continuous innovation.",
+    desc: "Led by Principal Dr. Rupa Tyagi, RKPS teachers focus on the academic growth and holistic well-being of every child through dedicated classroom mentoring and continuous innovation.",
     image: principalImg,
     stats: [
       { num: "100+", label: "Teachers & Mentors", icon: "GraduationCap" },

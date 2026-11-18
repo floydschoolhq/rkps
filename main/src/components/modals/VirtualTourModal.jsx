@@ -1,35 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Eye, Sparkles } from 'lucide-react';
 import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
-import slide2Img from '@assets/slides/2.webp';
-import slide4Img from '@assets/slides/4.webp';
+import libraryImg from '@assets/photos/library.webp';
+import smartClassImg from '@assets/photos/smart-classroom.webp';
+import playAreaImg from '@assets/photos/play-area.webp';
+import sportsImg from '@assets/photos/sports-exercise.webp';
 import slide5Img from '@assets/slides/5.webp';
 
 // Each stop shows a real RKPS photo and describes only what that photo shows.
 const tourSpots = [
   {
-    title: 'School Campus & Transport Fleet',
+    title: 'School Campus',
     category: 'Campus Grounds',
     image: exteriorImg,
-    description: 'Sprawling campus grounds with secure gated entry, GPS-monitored fleet of air-conditioned school buses covering all major routes across Ghaziabad, Noida, and East Delhi.'
+    description: 'Our main building on NH-9, Lal Kuan, Ghaziabad, with secure gated entry.'
+  },
+  {
+    title: 'School Library',
+    category: 'Reading & Research',
+    image: libraryImg,
+    description: 'Glass-fronted book cabinets and reading tables where students browse, borrow and study quietly.'
+  },
+  {
+    title: 'Smart Classrooms',
+    category: 'Academics',
+    image: smartClassImg,
+    description: 'Classrooms equipped with digital display boards that bring lessons to life with visuals and video.'
   },
   {
     title: 'Pre-Primary Play Area',
     category: 'Early Years',
-    image: slide2Img,
-    description: 'Colourful outdoor play equipment where our youngest learners build confidence, balance, and friendships.'
+    image: playAreaImg,
+    description: 'Colourful outdoor play equipment where our youngest learners build confidence, balance and friendships.'
+  },
+  {
+    title: 'Sports & Fitness',
+    category: 'Physical Education',
+    image: sportsImg,
+    description: 'Daily drills and outdoor activities that keep students active, fit and team-minded.'
   },
   {
     title: 'Events & Celebrations',
     category: 'Performing Arts & Culture',
     image: slide5Img,
     description: "Our stage hosts assemblies, annual functions and honours such as the Teacher's Day Rashtriya Puraskar Samman Samaroh 2025."
-  },
-  {
-    title: 'Our Achievers',
-    category: 'Sports & Competitions',
-    image: slide4Img,
-    description: 'Students with the trophies and medals they have won for RKPS in competitions and championships.'
   }
 ];
 

@@ -4,10 +4,20 @@ import { Link } from 'react-router-dom';
 import AccordionGallery from '../components/AccordionGallery';
 import { STUDENT_VOICES } from '../data/rkpsData';
 import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
-import slide2Img from '@assets/slides/2.webp';
+import slide2Img from '@assets/photos/play-area.webp';
 import slide3Img from '@assets/slides/3.webp';
-import slide4Img from '@assets/slides/4.webp';
+import slide4Img from '@assets/photos/trophy-winners.webp';
 import slide5Img from '@assets/slides/5.webp';
+import schoolBuildingImg from '@assets/photos/school-building.webp';
+import libraryImg from '@assets/photos/library.webp';
+import smartClassImg from '@assets/photos/smart-classroom.webp';
+import classroomImg from '@assets/photos/classroom-senior.webp';
+import teacherImg from '@assets/photos/teacher-guidance.webp';
+import blackboardImg from '@assets/photos/blackboard-lesson.webp';
+import sportsExerciseImg from '@assets/photos/sports-exercise.webp';
+import sportsSkippingImg from '@assets/photos/sports-skipping.webp';
+import trophyStudentImg from '@assets/photos/trophy-student-1.webp';
+import studentsSmilingImg from '@assets/photos/students-smiling.webp';
 
 // Real RKPS photos only. Add new ones by importing them from src/assets.
 const galleryPhotos = [
@@ -51,8 +61,20 @@ const galleryPhotos = [
     image: slide5Img,
     desc: "Guests and faculty on stage at the Teacher's Day Rashtriya Puraskar Samman Samaroh."
   },
+  ...[
+    [schoolBuildingImg, 'Main Building Entrance', 'campus', 'Campus & Infrastructure', 'The front of our main building with its arched entrance and stairways.'],
+    [libraryImg, 'School Library', 'campus', 'Campus & Infrastructure', 'Book cabinets and reading tables in the school library.'],
+    [smartClassImg, 'Smart Classroom Session', 'academics', 'Academics', 'Students following a lesson on the digital display board.'],
+    [classroomImg, 'Senior Classroom', 'academics', 'Academics', 'Senior students at work in their classroom.'],
+    [teacherImg, 'Personal Guidance', 'academics', 'Academics', 'A teacher guiding students one-on-one during class.'],
+    [blackboardImg, 'Lesson at the Blackboard', 'academics', 'Academics', 'Young learners following a lesson at the blackboard.'],
+    [sportsExerciseImg, 'Morning Fitness Drill', 'sports', 'Sports & Achievements', 'Students warming up together on the sports turf.'],
+    [sportsSkippingImg, 'Skipping in the Courtyard', 'sports', 'Sports & Achievements', 'A student skipping in the school courtyard.'],
+    [trophyStudentImg, 'Proud Trophy Winner', 'sports', 'Sports & Achievements', 'A student with the trophy he won for RKPS.'],
+    [studentsSmilingImg, 'RKPS Students', 'campus', 'Student Life', 'Students relaxing in the play area.']
+  ].map(([image, title, category, categoryLabel, desc], i) => ({ id: 6 + i, image, title, category, categoryLabel, desc })),
   ...STUDENT_VOICES.slice(0, 4).map((v, i) => ({
-    id: 6 + i,
+    id: 16 + i,
     title: 'Student Voices',
     category: 'campus',
     categoryLabel: 'Student Life',
@@ -66,7 +88,8 @@ const featuredAccordionItems = [
   { image: slide2Img, label: 'Early Years', alt: 'Pre-primary students in the play area', link: '#gallery-grid' },
   { image: slide4Img, label: 'Achievers', alt: 'Students holding trophies', link: '#gallery-grid' },
   { image: slide5Img, label: "Teacher's Day", alt: "Teacher's Day honours on stage", link: '#gallery-grid' },
-  { image: slide3Img, label: 'Board Toppers', alt: 'CBSE Class X subject toppers 2025', link: '#gallery-grid' }
+  { image: libraryImg, label: 'Library', alt: 'The school library', link: '#gallery-grid' },
+  { image: smartClassImg, label: 'Smart Classrooms', alt: 'Students in a smart classroom', link: '#gallery-grid' }
 ];
 
 export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {

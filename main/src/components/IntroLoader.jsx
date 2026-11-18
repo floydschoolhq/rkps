@@ -70,17 +70,32 @@ export default function IntroLoader() {
       tl.from(q('[data-name]'), { autoAlpha: 0, y: 18, duration: 0.55, ease: 'power3.out' }, 0.5);
       tl.from(q('[data-rule]'), { scaleX: 0, duration: 0.6, ease: 'power3.inOut' }, 0.65);
 
-      // Stage 4: cycle each phrase up through the mask
+      // Stage 4: cycle each phrase cleanly with zero overlap
+      gsap.set(phrases, { autoAlpha: 0, y: 40 });
+
       let t = 1.05;
+      const enterDur = 0.38;
+      const displayDur = 0.65;
+      const exitDur = 0.28;
+
       phrases.forEach((el, i) => {
         const isLast = i === phrases.length - 1;
-        tl.fromTo(el, { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: 'power3.out' }, t);
-        if (!isLast) tl.to(el, { yPercent: -110, duration: 0.32, ease: 'power3.in' }, t + 0.6);
-        t += 0.62;
+        // Slide in & fade in
+        tl.to(el, { autoAlpha: 1, y: 0, duration: enterDur, ease: 'power3.out' }, t);
+
+        if (!isLast) {
+          const exitStart = t + enterDur + displayDur;
+          // Slide up & fade out completely (autoAlpha sets visibility: hidden)
+          tl.to(el, { autoAlpha: 0, y: -40, duration: exitDur, ease: 'power2.in' }, exitStart);
+          // Older text is completely removed before next text arrives
+          t = exitStart + exitDur + 0.05;
+        } else {
+          t += enterDur + displayDur + 0.3;
+        }
       });
 
       // Stage 5 → 7: closing line, fade, lift the curtain
-      tl.addLabel('exit', t + 0.5);
+      tl.addLabel('exit', t + 0.3);
       tl.to(q('[data-content]'), { autoAlpha: 0, y: -30, duration: 0.4, ease: 'power2.in' }, 'exit');
       tl.to(root, { yPercent: -100, duration: 0.85, ease: 'power4.inOut' }, 'exit+=0.25');
 
@@ -134,14 +149,14 @@ export default function IntroLoader() {
         </p>
         <span data-rule className="mt-4 block h-px w-40 sm:w-56 bg-[#f0b429] origin-center" />
 
-        {/* Stages 4–5: phrases stacked in one mask, each slides through in turn */}
-        <div className="relative mt-6 h-[1.15em] w-[90vw] overflow-hidden font-bebas text-5xl sm:text-7xl md:text-8xl tracking-wider uppercase leading-none">
+        {/* Stages 4–5: phrases stacked in one mask, each slides through in turn with zero overlap */}
+        <div className="relative mt-6 h-16 sm:h-20 md:h-24 w-[92vw] max-w-4xl overflow-hidden font-bebas text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-wider uppercase leading-none flex items-center justify-center">
           {[...PHRASES, CLOSING].map((text, i) => (
             <span
               key={text}
               data-phrase
-              className={`absolute inset-x-0 top-0 translate-y-[110%] ${
-                i === PHRASES.length ? 'text-[#faba28]' : ''
+              className={`absolute inset-0 flex items-center justify-center text-center whitespace-nowrap opacity-0 ${
+                i === PHRASES.length ? 'text-[#faba28]' : 'text-white'
               }`}
             >
               {text}

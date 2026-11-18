@@ -160,17 +160,6 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
 
   return (
     <>
-      {/* 0. Left-Docked Vertical Ribbon "WHAT'S NEW?" (Exact match of SAS Page 0) */}
-      <button
-        onClick={onToggleWhatsNew}
-        className="fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-[#052051] hover:bg-[#a22634] text-white text-[11px] font-extrabold tracking-[0.14em] uppercase py-4 px-2.5 rounded-r-md shadow-2xl transition-all duration-400 ease-sas cursor-pointer flex items-center gap-2 [writing-mode:vertical-rl] rotate-180 border-r border-y border-white/20 hover:pl-3.5"
-        title="What's New at RKPS"
-        aria-label="Open What's New announcements and quick links"
-      >
-        <Bell className="w-3.5 h-3.5 rotate-90 text-[#faba28]" />
-        <span>WHAT'S NEW?</span>
-      </button>
-
       {/* 1. Global Header Bar (SAS cubic-bezier(0.34, 0.615, 0.4, 0.985) sticky transition) */}
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ease-sas ${
@@ -247,6 +236,23 @@ export default function Header({ onNavigateAction, onToggleWhatsNew }) {
                 ))}
               </div>
             </div>
+
+            {/* What's New Trigger */}
+            <button
+              onClick={onToggleWhatsNew}
+              className={`flex items-center gap-1.5 px-3 py-2 rounded-full transition-all duration-300 border cursor-pointer ${
+                solidHeader
+                  ? 'border-slate-200 text-[#0b2a63] hover:bg-slate-50 hover:border-[#0b2a63]/40'
+                  : 'border-white/35 text-white hover:bg-white/15'
+              }`}
+              title="What's New at RKPS"
+              aria-label="Open What's New announcements and quick links"
+            >
+              <Bell className="w-3.5 h-3.5 text-[#faba28]" />
+              <span className="hidden md:inline text-xs font-extrabold tracking-wider uppercase">
+                WHAT'S NEW?
+              </span>
+            </button>
 
             {/* Search Trigger */}
             <button

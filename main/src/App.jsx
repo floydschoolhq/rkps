@@ -74,6 +74,9 @@ function AppShell() {
             setErpRole('staff');
             setErpOpen(true);
             return;
+          case 'whats-new':
+            setWhatsNewOpen(true);
+            return;
           default:
             return;
         }

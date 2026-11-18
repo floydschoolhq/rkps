@@ -1,7 +1,7 @@
 import React from 'react';
 import { Quote, CheckCircle2, Mail, ArrowRight, ChevronRight, Award, ShieldCheck, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import principalImg from '@assets/principal.webp';
+import principalImg from '@assets/photos/principal-rupa-tyagi.webp';
 
 export default function PrincipalsDeskPage({ onOpenAdmission }) {
   return (
@@ -54,7 +54,7 @@ export default function PrincipalsDeskPage({ onOpenAdmission }) {
                 <img
                   src={principalImg}
                   alt="Dr. Rupa Tyagi"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-[50%_70%]"
                 />
               </div>
 

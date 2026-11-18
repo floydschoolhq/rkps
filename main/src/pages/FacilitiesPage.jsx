@@ -6,9 +6,11 @@ import {
 import { Link } from 'react-router-dom';
 
 import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
-import slide3Img from '@assets/slides/3.webp';
-import slide4Img from '@assets/slides/4.webp';
 import slide5Img from '@assets/slides/5.webp';
+import libraryImg from '@assets/photos/library.webp';
+import classroomImg from '@assets/photos/classroom-senior.webp';
+import smartClassImg from '@assets/photos/smart-classroom.webp';
+import sportsImg from '@assets/photos/sports-exercise.webp';
 
 const facilityBentoItems = [
   {
@@ -32,7 +34,7 @@ const facilityBentoItems = [
     tag: 'Knowledge Repository',
     category: 'library',
     tagColor: 'bg-blue-600 text-white font-bold',
-    image: exteriorImg,
+    image: libraryImg,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: BookOpen,
     badgeFeatures: ['20,000+ Volumes', 'Digital Carrels'],
@@ -46,7 +48,7 @@ const facilityBentoItems = [
     tag: 'Academic Distinction',
     category: 'academic',
     tagColor: 'bg-emerald-600 text-white font-bold',
-    image: slide3Img,
+    image: classroomImg,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: ShieldCheck,
     isFeatured: true, // Signature amber border from reference design
@@ -61,7 +63,7 @@ const facilityBentoItems = [
     tag: 'Future-Ready STEM',
     category: 'stem',
     tagColor: 'bg-indigo-600 text-white font-bold',
-    image: slide3Img,
+    image: smartClassImg,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Cpu,
     badgeFeatures: ['Atal Tinkering', 'Robotics Kits', '3D Prototyping'],
@@ -75,7 +77,7 @@ const facilityBentoItems = [
     tag: 'Sports Excellence',
     category: 'sports',
     tagColor: 'bg-amber-500 text-slate-950 font-black',
-    image: slide4Img,
+    image: sportsImg,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Trophy,
     badgeFeatures: ['Cricket Turf', 'Basketball Academy', 'NIS Mentors'],
