@@ -28,6 +28,9 @@ if (typeof window !== 'undefined') {
   } else {
     window.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
   }
+  // Web fonts swap in after first paint (display=swap) and Bebas is far narrower than its
+  // fallback, so headline heights change: re-measure once the real fonts are in.
+  document.fonts?.ready.then(() => ScrollTrigger.refresh());
 }
 
 export { gsap, ScrollTrigger, SplitText };

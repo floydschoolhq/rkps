@@ -18,6 +18,7 @@ import sportsExerciseImg from '@assets/photos/sports-exercise.webp';
 import sportsSkippingImg from '@assets/photos/sports-skipping.webp';
 import trophyStudentImg from '@assets/photos/trophy-student-1.webp';
 import studentsSmilingImg from '@assets/photos/students-smiling.webp';
+import PageHero from '../components/ui/PageHero';
 
 // Real RKPS photos only. Add new ones by importing them from src/assets.
 const galleryPhotos = [
@@ -103,52 +104,22 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen">
       
-      {/* 1. Page Header (Ravensbourne / MIT Dark Hero) */}
-      <section className="relative py-20 sm:py-24 bg-gradient-to-b from-[#050E24] via-[#08173d] to-[#050E24] text-white overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-6 font-medium">
-            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
-            <span className="text-slate-500">/</span>
-            <span className="text-slate-300">Campus</span>
-            <span className="text-slate-500">/</span>
-            <span className="text-amber-400 font-semibold">Gallery</span>
-          </nav>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-widest mb-4">
-            <Camera className="w-3.5 h-3.5 text-amber-400" />
-            <span>Campus Memories &amp; Moments</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black heading-serif tracking-tight text-white leading-tight">
-            Photo &amp; Media Gallery
-          </h1>
-
-          <div className="w-20 h-1.5 bg-amber-400 mx-auto mt-4 mb-5 rounded-full" />
-
-          <p className="text-base sm:text-xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed">
-            Explore glimpses of daily campus life, scientific inquiry, sports achievements, and vibrant celebrations at Radha Krishna Public School.
-          </p>
-
-          {/* Quick Virtual Tour Trigger */}
-          {onOpenVirtualTour && (
-            <div className="mt-6 flex justify-center">
-              <button
-                onClick={onOpenVirtualTour}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
-              >
-                <Compass className="w-4 h-4" />
-                <span>Launch 360° Virtual Campus Tour</span>
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
+      {/* 1. Page header (shared homepage-style hero) */}
+      <PageHero
+        crumbs={[{ label: 'Campus' }, { label: 'Gallery' }]}
+        kicker="Campus Memories & Moments"
+        title="Photo &"
+        accent="Media Gallery"
+        subtitle="Explore glimpses of daily campus life, scientific inquiry, sports achievements, and vibrant celebrations at Radha Krishna Public School."
+        image={studentsSmilingImg}
+      >
+        {onOpenVirtualTour && (
+          <button onClick={onOpenVirtualTour} className="btn-sas">
+            <Compass className="w-4 h-4" />
+            Launch 360° Virtual Campus Tour
+          </button>
+        )}
+      </PageHero>
 
       {/* 2. Interactive Accordion Showcase (No Outline Frame) */}
       <section className="py-10 max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
@@ -158,8 +129,8 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
             defaultIndex={0}
             expandRatio={0.54}
             trigger="hover"
-            accentColor="#f59e0b"
-            overlayColor="#0b1e48"
+            accentColor="#faba28"
+            overlayColor="#0b2a63"
             textColor="#ffffff"
             grayscale={false}
             height={520}
@@ -190,8 +161,8 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 sm:px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-blue-900 text-white shadow-md scale-105 ring-2 ring-blue-700'
-                  : 'bg-white text-slate-600 hover:text-blue-900 hover:bg-slate-100 border border-slate-200'
+                  ? 'bg-[#0b2a63] text-white shadow-md scale-105 ring-2 ring-[#a22634]'
+                  : 'bg-white text-slate-600 hover:text-[#0b2a63] hover:bg-slate-100 border border-slate-200'
               }`}
             >
               {cat.label}
@@ -208,23 +179,23 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
               className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-1.5 cursor-pointer flex flex-col"
             >
               {/* Photo Image Container */}
-              <div className="relative h-60 w-full overflow-hidden bg-slate-900">
+              <div className="relative h-60 w-full overflow-hidden bg-[#0b2a63]">
                 <img
                   src={photo.image}
                   alt={photo.title}
                   loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071f4c]/80 via-transparent to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />
                 
                 {/* Category Badge */}
-                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-blue-900 shadow">
+                <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-extrabold uppercase tracking-wider text-[#0b2a63] shadow">
                   {photo.categoryLabel}
                 </span>
 
                 {/* View Icon Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="p-3 rounded-full bg-amber-400 text-slate-950 shadow-xl scale-90 group-hover:scale-100 transition-transform">
+                  <span className="p-3 rounded-full bg-[#faba28] text-[#0b2a63] shadow-xl scale-90 group-hover:scale-100 transition-transform">
                     <Eye className="w-5 h-5" />
                   </span>
                 </div>
@@ -233,14 +204,14 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
               {/* Photo Metadata */}
               <div className="p-5 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-base font-bold text-[#0B1E48] heading-serif mb-1 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-base font-bold text-[#0b2a63] heading-serif mb-1 group-hover:text-[#a22634] transition-colors">
                     {photo.title}
                   </h3>
                   <p className="text-xs text-slate-500 leading-relaxed font-medium">
                     {photo.desc}
                   </p>
                 </div>
-                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-blue-700 font-bold">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-[#a22634] font-bold">
                   <span>Click to expand</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
@@ -257,7 +228,7 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
           onClick={() => setSelectedPhoto(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            className="relative max-w-4xl w-full bg-[#0b2a63] rounded-2xl overflow-hidden shadow-2xl border border-white/20"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -276,8 +247,8 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
               />
             </div>
 
-            <div className="p-6 bg-slate-900 text-white">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400">
+            <div className="p-6 bg-[#0b2a63] text-white">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#faba28]">
                 {selectedPhoto.categoryLabel}
               </span>
               <h2 className="text-xl font-bold heading-serif mt-1">
@@ -292,7 +263,7 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
       )}
 
       {/* 5. Campus Visit Callout */}
-      <section className="py-14 bg-gradient-to-r from-[#0B1E48] via-[#102a6b] to-[#0B1E48] text-white text-center">
+      <section className="py-14 bg-gradient-to-r from-[#0b2a63] via-[#0b2a63] to-[#0b2a63] text-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-black heading-serif mb-3">
             Want to See Our Campus in Person?
@@ -303,13 +274,13 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={onOpenAdmission}
-              className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
+              className="font-bebas px-6 py-2.5 rounded-full bg-[#faba28] hover:bg-[#faba28] text-[#0b2a63] text-base sm:text-lg uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
             >
               Apply for Admission 2026–27
             </button>
             <Link
               to="/contact"
-              className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+              className="font-bebas px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base sm:text-lg uppercase tracking-wider transition-all cursor-pointer"
             >
               Book Physical Campus Tour
             </Link>

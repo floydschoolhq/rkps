@@ -48,9 +48,14 @@ export default function BeyondClassroom({ onNavigateAction }) {
           </TabStrip>
 
           {/* Right: Multi-Line Display Title */}
-          <div style={{ transitionDelay: '180ms' }} className="sas-reveal-right text-left lg:text-right">
-            <h2 className="font-bebas text-5xl sm:text-6xl lg:text-7xl text-white tracking-wider uppercase leading-[0.92]">
-              CULTIVATING<br className="hidden sm:inline" /> EXCEPTIONAL<br className="hidden sm:inline" /> THINKERS
+          {/* Each word is its own line from sm up. Explicit block spans instead of <br>: GSAP SplitText
+              rebuilds the heading into masked words, and responsive <br>s don't survive that reliably,
+              which left the words staggered/misaligned. Lines share one left edge so the stack reads straight. */}
+          <div style={{ transitionDelay: '180ms' }} className="sas-reveal-right w-full lg:w-auto shrink-0">
+            <h2 className="font-bebas text-5xl sm:text-6xl lg:text-7xl text-white tracking-wider uppercase leading-[0.92] text-left">
+              <span className="sm:block">CULTIVATING</span>{' '}
+              <span className="sm:block">EXCEPTIONAL</span>{' '}
+              <span className="sm:block text-[#faba28]">THINKERS</span>
             </h2>
           </div>
         </div>

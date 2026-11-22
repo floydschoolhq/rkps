@@ -26,20 +26,55 @@
   }
 
   body {
-    font-family: 'DM Sans', Arial, sans-serif;
+    font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    font-optical-sizing: auto;
     color: var(--tx);
     background-color: var(--bg);
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, .font-bebas {
-    font-family: 'Bebas Neue', Arial, sans-serif;
+  /* Display face: only page/section headlines and explicit opt-ins.
+     h3/h4 without a class stay in DM Sans so small card labels remain readable. */
+  h1, h2, .font-bebas, .heading-serif {
+    font-family: 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
     letter-spacing: 0.03em;
+    line-height: 1.05;
+    /* Bebas Neue ships one weight; stop browsers smearing it into fake bold
+       when a font-bold / font-black utility is also on the element. */
+    font-synthesis-weight: none;
+    font-synthesis: style;
   }
 
+  /* Form controls don't inherit the page font by default. */
+  button, input, select, textarea {
+    font-family: inherit;
+  }
+
+  /* Subpage headings follow the homepage: uppercase Bebas. */
   .heading-serif {
-    font-family: 'Bebas Neue', Arial, sans-serif;
-    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* Shared homepage-style buttons for subpages */
+@layer components {
+  .btn-sas,
+  .btn-sas-outline,
+  .btn-sas-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3 rounded-full font-bebas text-base sm:text-lg tracking-wider uppercase transition-all duration-300 ease-sas cursor-pointer hover:scale-105 active:scale-95;
+  }
+  .btn-sas {
+    @apply bg-[#a22634] text-white shadow-lg hover:bg-[#7a1f2b];
+  }
+  .btn-sas-outline {
+    @apply border-2 border-[#a22634] text-[#a22634] hover:bg-[#a22634] hover:text-white;
+  }
+  .btn-sas-ghost {
+    @apply border-2 border-white/40 text-white hover:bg-white hover:text-[#0b2a63];
   }
 }
 
@@ -103,6 +138,17 @@
   0% {
     opacity: 0;
     transform: translateY(36px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes sasOverlapRise {
+  0% {
+    opacity: 0;
+    transform: translateY(64px);
   }
   100% {
     opacity: 1;
@@ -187,6 +233,10 @@
 
   .animate-sas-slide-up {
     animation: sasSlideUp 0.65s var(--sas-ease) forwards;
+  }
+
+  .animate-sas-overlap-rise {
+    animation: sasOverlapRise 0.75s var(--sas-ease) forwards;
   }
 
   .animate-sas-swoop {

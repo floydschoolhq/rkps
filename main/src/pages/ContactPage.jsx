@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, Sparkles, MessageSquare, Compass, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import confetti from 'canvas-confetti';
+import PageHero from '../components/ui/PageHero';
+import contactHeroImg from '@assets/photos/school-building.webp';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -31,37 +33,15 @@ export default function ContactPage() {
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen">
       
-      {/* 1. Page Header (Ravensbourne / MIT Dark Hero) */}
-      <section className="relative py-20 sm:py-24 bg-gradient-to-b from-[#050E24] via-[#08173d] to-[#050E24] text-white overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-6 font-medium">
-            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-500" />
-            <span className="text-amber-400 font-semibold">Contact Us</span>
-          </nav>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-widest mb-4">
-            <Compass className="w-3.5 h-3.5 text-amber-400" />
-            <span>Admissions &amp; General Enquiries</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black heading-serif tracking-tight text-white leading-tight">
-            Contact &amp; Connect With Us
-          </h1>
-
-          <div className="w-20 h-1.5 bg-amber-400 mx-auto mt-4 mb-5 rounded-full" />
-
-          <p className="text-base sm:text-xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed">
-            We look forward to welcoming you to Radha Krishna Public School. Reach out to our admissions team, schedule a campus visit, or connect with our academic secretariat.
-          </p>
-        </div>
-      </section>
+      {/* 1. Page header (shared homepage-style hero) */}
+      <PageHero
+        crumbs={[{ label: 'Contact Us' }]}
+        kicker="Admissions & General Enquiries"
+        title="Contact &"
+        accent="Connect With Us"
+        subtitle="We look forward to welcoming you to Radha Krishna Public School. Reach out to our admissions team, schedule a campus visit, or connect with our academic office."
+        image={contactHeroImg}
+      />
 
       {/* 2. Contact Cards & Form Grid */}
       <section className="py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
@@ -72,17 +52,17 @@ export default function ContactPage() {
             
             {/* Campus Address Card */}
             <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-lg space-y-6">
-              <h2 className="text-xl sm:text-2xl font-bold text-[#0B1E48] heading-serif flex items-center gap-2">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#0b2a63] heading-serif flex items-center gap-2">
                 <span>Campus Location</span>
               </h2>
 
               <div className="space-y-5 text-sm">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-900 flex items-center justify-center shrink-0 border border-blue-100">
-                    <MapPin className="w-5 h-5 text-blue-900" />
+                  <div className="w-10 h-10 rounded-xl bg-[#0b2a63]/5 text-[#0b2a63] flex items-center justify-center shrink-0 border border-[#0b2a63]/10">
+                    <MapPin className="w-5 h-5 text-[#0b2a63]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Campus Address</h3>
+                    <h3 className="font-bold text-[#0b2a63]">Campus Address</h3>
                     <p className="text-slate-600 mt-0.5 leading-relaxed">
                       Radha Krishna Public School, Pratap Vihar, Sector 12, Ghaziabad, Uttar Pradesh — 201009
                     </p>
@@ -90,37 +70,37 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center shrink-0 border border-amber-100">
-                    <Phone className="w-5 h-5 text-amber-600" />
+                  <div className="w-10 h-10 rounded-xl bg-[#a22634]/5 text-[#a22634] flex items-center justify-center shrink-0 border border-[#a22634]/10">
+                    <Phone className="w-5 h-5 text-[#a22634]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Telephone &amp; Helpline</h3>
+                    <h3 className="font-bold text-[#0b2a63]">Telephone &amp; Helpline</h3>
                     <p className="text-slate-600 mt-0.5">
-                      <a href="tel:+919310300600" className="hover:text-blue-900 font-medium">+91 9310300600</a>
+                      <a href="tel:+919310300600" className="hover:text-[#0b2a63] font-medium">+91 9310300600</a>
                     </p>
                     <p className="text-xs text-slate-500 mt-0.5">Admissions Cell: Ext. 102</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
-                    <Mail className="w-5 h-5 text-emerald-600" />
+                  <div className="w-10 h-10 rounded-xl bg-[#a22634]/5 text-[#a22634] flex items-center justify-center shrink-0 border border-[#a22634]/15">
+                    <Mail className="w-5 h-5 text-[#a22634]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Email Correspondence</h3>
+                    <h3 className="font-bold text-[#0b2a63]">Email Correspondence</h3>
                     <p className="text-slate-600 mt-0.5">
-                      <a href="mailto:rkpshelpdesk@gmail.com" className="hover:text-blue-900 font-medium">rkpshelpdesk@gmail.com</a>
+                      <a href="mailto:rkpshelpdesk@gmail.com" className="hover:text-[#0b2a63] font-medium">rkpshelpdesk@gmail.com</a>
                     </p>
                     <p className="text-xs text-slate-500">Admissions, Enquiries &amp; Help Desk</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center shrink-0 border border-purple-100">
-                    <Clock className="w-5 h-5 text-purple-600" />
+                  <div className="w-10 h-10 rounded-xl bg-[#0b2a63]/5 text-[#0b2a63] flex items-center justify-center shrink-0 border border-[#0b2a63]/15">
+                    <Clock className="w-5 h-5 text-[#0b2a63]" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-slate-900">Visiting &amp; Office Hours</h3>
+                    <h3 className="font-bold text-[#0b2a63]">Visiting &amp; Office Hours</h3>
                     <p className="text-slate-600 mt-0.5 font-medium">
                       Monday to Saturday: 8:00 AM – 3:30 PM
                     </p>
@@ -135,16 +115,16 @@ export default function ContactPage() {
                   href="https://wa.me/919310300600"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
+                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
                 >
                   <MessageSquare className="w-4 h-4" />
                   <span>WhatsApp Chat</span>
                 </a>
                 <a
                   href="tel:+919310300600"
-                  className="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-blue-950 hover:bg-blue-900 text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm"
+                  className="font-bebas flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-full bg-[#071f4c] hover:bg-[#0b2a63] text-white text-base sm:text-lg uppercase tracking-wider transition-colors shadow-sm"
                 >
-                  <Phone className="w-4 h-4 text-amber-400" />
+                  <Phone className="w-4 h-4 text-[#faba28]" />
                   <span>Call Directly</span>
                 </a>
               </div>
@@ -156,8 +136,8 @@ export default function ContactPage() {
           {/* Right Column: Admission & General Enquiry Form */}
           <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/80 shadow-xl">
             <div className="mb-6">
-              <span className="text-xs font-bold uppercase tracking-widest text-amber-700">Online Submission</span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B1E48] heading-serif mt-1">
+              <span className="text-xs font-bold uppercase tracking-widest text-[#a22634]">Online Submission</span>
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0b2a63] heading-serif mt-1">
                 Admissions &amp; General Enquiry Form
               </h2>
               <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -181,7 +161,7 @@ export default function ContactPage() {
                     setSubmitted(false);
                     setFormData({ parentName: '', studentName: '', grade: '', phone: '', email: '', message: '' });
                   }}
-                  className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-colors cursor-pointer"
+                  className="px-5 py-2.5 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider rounded-full transition-colors cursor-pointer"
                 >
                   Submit Another Enquiry
                 </button>
@@ -199,7 +179,7 @@ export default function ContactPage() {
                       placeholder="e.g. Ramesh Kumar"
                       value={formData.parentName}
                       onChange={(e) => setFormData({ ...formData, parentName: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm"
                     />
                   </div>
 
@@ -212,7 +192,7 @@ export default function ContactPage() {
                       placeholder="e.g. Aarav Kumar"
                       value={formData.studentName}
                       onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm"
                     />
                   </div>
                 </div>
@@ -228,7 +208,7 @@ export default function ContactPage() {
                       placeholder="+91 9310300600"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm"
                     />
                   </div>
 
@@ -241,7 +221,7 @@ export default function ContactPage() {
                       placeholder="name@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm"
                     />
                   </div>
                 </div>
@@ -253,7 +233,7 @@ export default function ContactPage() {
                   <select
                     value={formData.grade}
                     onChange={(e) => setFormData({ ...formData, grade: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm bg-white"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm bg-white"
                   >
                     <option value="">Select Grade / Class</option>
                     <option value="Pre-Nursery">Pre-Nursery / Nursery</option>
@@ -274,17 +254,17 @@ export default function ContactPage() {
                     placeholder="Tell us about your requirements or specific queries regarding curriculum, transport, or facilities..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-900 text-sm resize-none"
+                    className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm resize-none"
                   />
                 </div>
 
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-8 py-3.5 bg-blue-950 hover:bg-blue-900 text-white text-xs sm:text-sm font-extrabold uppercase tracking-wider rounded-xl transition-all shadow-md hover:scale-102 active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
+                    className="font-bebas w-full sm:w-auto px-8 py-3.5 bg-[#071f4c] hover:bg-[#0b2a63] text-white text-base sm:text-lg uppercase tracking-wider rounded-full transition-all shadow-md hover:scale-102 active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <span>Submit Enquiry</span>
-                    <Send className="w-4 h-4 text-amber-400" />
+                    <Send className="w-4 h-4 text-[#faba28]" />
                   </button>
                 </div>
               </form>
@@ -300,7 +280,7 @@ export default function ContactPage() {
         <div className="bg-white rounded-3xl p-4 sm:p-6 border border-slate-200/80 shadow-md overflow-hidden">
           <div className="mb-4 flex items-center justify-between">
             <div>
-              <h3 className="text-lg font-bold text-[#0B1E48] heading-serif">
+              <h3 className="text-lg font-bold text-[#0b2a63] heading-serif">
                 Campus Location on Google Maps
               </h3>
               <p className="text-xs text-slate-500">

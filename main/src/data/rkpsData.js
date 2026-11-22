@@ -110,6 +110,7 @@ export const WHY_CHOOSE_TABS = [
     title: "TEACHERS WHO RAISE THE STANDARD",
     desc: "Led by Principal Dr. Rupa Tyagi, RKPS teachers focus on the academic growth and holistic well-being of every child through dedicated classroom mentoring and continuous innovation.",
     image: principalImg,
+    imagePosition: "50% 28%",
     stats: [
       { num: "100+", label: "Teachers & Mentors", icon: "GraduationCap" },
       { num: "8.5", label: "Avg Years Experience", icon: "Clock" },
@@ -155,6 +156,7 @@ export const WHY_CHOOSE_TABS = [
     title: "A LEGACY SINCE 2004",
     desc: "Radha Krishna Public School began in 2004 and is proudly affiliated with the Central Board of Secondary Education, New Delhi. It has steadily grown with the families and aspirations of Ghaziabad.",
     image: directorImg,
+    imagePosition: "50% 28%",
     stats: [
       { num: "2004", label: "Founded with Quality Vision", icon: "Calendar" },
       { num: "100%", label: "CBSE Board Pass Record", icon: "CheckCircle2" },

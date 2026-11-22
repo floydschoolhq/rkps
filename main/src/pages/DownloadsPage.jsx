@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Download, FileText, CalendarDays, BookOpen, Clock, CheckCircle2, FileCheck, Search, Filter, ExternalLink, Eye, CreditCard } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import feeStructurePdf from '@assets/SCAN_20261009_082427092.pdf';
+import PageHero from '../components/ui/PageHero';
 
 const curriculumDownloads = [
   {
@@ -131,45 +132,21 @@ export default function DownloadsPage({ onOpenAdmission }) {
 
   return (
     <div className="bg-slate-50 text-slate-800 min-h-screen">
-      {/* 1. Header Banner (Ravensbourne / MIT Dark Hero) */}
-      <section className="relative py-20 sm:py-24 bg-gradient-to-b from-[#050E24] via-[#08173d] to-[#050E24] text-white overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        <div className="absolute top-1/4 -left-32 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          
-          {/* Breadcrumb Navigation */}
-          <nav className="flex items-center justify-center gap-2 text-xs text-slate-400 mb-6 font-medium">
-            <Link to="/" className="hover:text-amber-400 transition-colors">Home</Link>
-            <span className="text-slate-500">/</span>
-            <span className="text-slate-300">Academics</span>
-            <span className="text-slate-500">/</span>
-            <span className="text-amber-400 font-semibold">Downloads</span>
-          </nav>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-amber-300 text-xs font-bold uppercase tracking-widest mb-4">
-            <FileCheck className="w-3.5 h-3.5 text-amber-400" />
-            <span>Academic Guidelines &amp; Schedules</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black heading-serif tracking-tight text-white leading-tight">
-            Curriculum &amp; Datesheets
-          </h1>
-
-          <div className="w-20 h-1.5 bg-amber-400 mx-auto mt-4 mb-5 rounded-full" />
-
-          <p className="text-base sm:text-xl text-slate-200 max-w-3xl mx-auto font-normal leading-relaxed">
-            Access official CBSE syllabi, course blueprints, examination schedules, and academic calendars for Radha Krishna Public School.
-          </p>
-
+      {/* 1. Page header (shared homepage-style hero) */}
+      <PageHero
+        crumbs={[{ label: 'Academics' }, { label: 'Downloads' }]}
+        kicker="Academic Guidelines & Schedules"
+        title="Curriculum &"
+        accent="Datesheets"
+        subtitle="Access official CBSE syllabi, course blueprints, examination schedules, and academic calendars for Radha Krishna Public School."
+      >
           {/* Quick Filter Navigation Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
+          <div className="flex flex-wrap items-center justify-start gap-3 mt-8">
             <button
               onClick={() => setActiveTab('all')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
                 activeTab === 'all'
-                  ? 'bg-amber-400 text-slate-950 shadow-md scale-105'
+                  ? 'bg-[#faba28] text-[#0b2a63] shadow-md scale-105'
                   : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
               }`}
             >
@@ -180,7 +157,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               onClick={() => setActiveTab('curriculum')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'curriculum'
-                  ? 'bg-amber-400 text-slate-950 shadow-md scale-105'
+                  ? 'bg-[#faba28] text-[#0b2a63] shadow-md scale-105'
                   : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
               }`}
             >
@@ -192,7 +169,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               onClick={() => setActiveTab('datesheet')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'datesheet'
-                  ? 'bg-amber-400 text-slate-950 shadow-md scale-105'
+                  ? 'bg-[#faba28] text-[#0b2a63] shadow-md scale-105'
                   : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
               }`}
             >
@@ -204,7 +181,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               onClick={() => setActiveTab('fee')}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer ${
                 activeTab === 'fee'
-                  ? 'bg-amber-400 text-slate-950 shadow-md scale-105'
+                  ? 'bg-[#faba28] text-[#0b2a63] shadow-md scale-105'
                   : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
               }`}
             >
@@ -212,8 +189,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               <span>Fee Structure (2026–27)</span>
             </a>
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* 2. Search & Controls Bar */}
       <section className="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-20">
@@ -225,13 +201,13 @@ export default function DownloadsPage({ onOpenAdmission }) {
               placeholder="Search by class, subject, or exam..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#1d4fa8] focus:bg-white transition-all"
             />
           </div>
 
           <div className="flex items-center gap-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
-            <Filter className="w-3.5 h-3.5 text-blue-600" />
-            <span>Academic Session: <strong className="text-blue-900 font-extrabold">2026–27</strong></span>
+            <Filter className="w-3.5 h-3.5 text-[#1d4fa8]" />
+            <span>Academic Session: <strong className="text-[#0b2a63] font-extrabold">2026–27</strong></span>
           </div>
         </div>
       </section>
@@ -239,12 +215,12 @@ export default function DownloadsPage({ onOpenAdmission }) {
       {/* Featured Official Fee Structure Card */}
       {(activeTab === 'all' || activeTab === 'fee') && (
         <section id="fee-structure" className="scroll-mt-28 py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-blue-950 via-slate-900 to-blue-950 rounded-3xl p-6 sm:p-8 text-white border border-amber-400/30 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="bg-gradient-to-r from-[#071f4c] via-[#0b2a63] to-[#071f4c] rounded-3xl p-6 sm:p-8 text-white border border-[#faba28]/30 shadow-xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-[#faba28]/10 rounded-full blur-3xl pointer-events-none" />
             <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
               <div className="space-y-2 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider border border-amber-400/30">
-                  <CreditCard className="w-3.5 h-3.5 text-amber-400" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#faba28]/20 text-[#faba28] text-xs font-bold uppercase tracking-wider border border-[#faba28]/30">
+                  <CreditCard className="w-3.5 h-3.5 text-[#faba28]" />
                   <span>Official Circular • Academic Session 2026–27</span>
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold heading-serif text-white">
@@ -271,16 +247,16 @@ export default function DownloadsPage({ onOpenAdmission }) {
                   rel="noopener noreferrer"
                   className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-bold transition-all border border-white/20 flex items-center justify-center gap-2 flex-1 sm:flex-initial"
                 >
-                  <Eye className="w-4 h-4 text-amber-400" />
+                  <Eye className="w-4 h-4 text-[#faba28]" />
                   <span>Preview</span>
                   <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
                 </a>
                 <a
                   href={feeStructurePdf}
                   download="RKPS_Fee_Structure_2026-27.pdf"
-                  className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-extrabold uppercase tracking-wider transition-all shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-1 sm:flex-initial"
+                  className="font-bebas px-6 py-3 rounded-full bg-[#faba28] hover:bg-[#faba28] text-[#0b2a63] text-base sm:text-lg uppercase tracking-wider transition-all shadow-lg hover:scale-105 active:scale-95 flex items-center justify-center gap-2 flex-1 sm:flex-initial"
                 >
-                  <Download className="w-4 h-4 text-slate-950" />
+                  <Download className="w-4 h-4 text-[#0b2a63]" />
                   <span>Download PDF</span>
                 </a>
               </div>
@@ -294,15 +270,15 @@ export default function DownloadsPage({ onOpenAdmission }) {
         <section id="curriculum" className="scroll-mt-28 py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
             <div>
-              <div className="flex items-center gap-2 text-amber-700 text-xs font-bold uppercase tracking-widest">
-                <BookOpen className="w-4 h-4 text-amber-600" />
+              <div className="flex items-center gap-2 text-[#a22634] text-xs font-bold uppercase tracking-widest">
+                <BookOpen className="w-4 h-4 text-[#a22634]" />
                 <span>Academic Blueprints</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1E48] heading-serif mt-1">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2a63] heading-serif mt-1">
                 Curriculum &amp; Syllabi
               </h2>
             </div>
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-800 text-xs font-bold border border-blue-200">
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#0b2a63]/5 text-[#0b2a63] text-xs font-bold border border-[#0b2a63]/20">
               CBSE Affiliated Pedagogy
             </span>
           </div>
@@ -315,7 +291,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-blue-800 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#0b2a63] bg-[#0b2a63]/5 px-2.5 py-1 rounded-full border border-[#0b2a63]/20">
                       {item.grade}
                     </span>
                     <span className="text-[10px] font-semibold text-slate-500">
@@ -323,7 +299,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
                     </span>
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-[#0B1E48] heading-serif mb-2 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold text-[#0b2a63] heading-serif mb-2 group-hover:text-[#a22634] transition-colors">
                     {item.title}
                   </h3>
 
@@ -340,8 +316,8 @@ export default function DownloadsPage({ onOpenAdmission }) {
                   <span className="text-[11px] text-slate-500 font-medium">
                     {item.date}
                   </span>
-                  <span className="text-[11px] text-blue-900 font-semibold bg-blue-50 px-2.5 py-1 rounded-md border border-blue-100 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-blue-600" />
+                  <span className="text-[11px] text-[#0b2a63] font-semibold bg-[#0b2a63]/5 px-2.5 py-1 rounded-md border border-[#0b2a63]/10 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#1d4fa8]" />
                     <span>CBSE Aligned</span>
                   </span>
                 </div>
@@ -356,15 +332,15 @@ export default function DownloadsPage({ onOpenAdmission }) {
         <section id="datesheet" className="scroll-mt-28 py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
             <div>
-              <div className="flex items-center gap-2 text-amber-700 text-xs font-bold uppercase tracking-widest">
-                <CalendarDays className="w-4 h-4 text-amber-600" />
+              <div className="flex items-center gap-2 text-[#a22634] text-xs font-bold uppercase tracking-widest">
+                <CalendarDays className="w-4 h-4 text-[#a22634]" />
                 <span>Examination Schedules</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B1E48] heading-serif mt-1">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b2a63] heading-serif mt-1">
                 Datesheets &amp; Examination Timetables
               </h2>
             </div>
-            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-800 text-xs font-bold border border-amber-200">
+            <span className="hidden sm:inline-block px-3 py-1 rounded-full bg-[#a22634]/5 text-[#a22634] text-xs font-bold border border-[#a22634]/25">
               Session 2025–26 &amp; 2026–27
             </span>
           </div>
@@ -377,7 +353,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#a22634] bg-[#a22634]/5 px-2.5 py-1 rounded-full border border-[#a22634]/25">
                       {item.category}
                     </span>
                     <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
@@ -385,7 +361,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-[#0B1E48] heading-serif mb-2 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-base font-bold text-[#0b2a63] heading-serif mb-2 group-hover:text-[#a22634] transition-colors">
                     {item.title}
                   </h3>
 
@@ -395,11 +371,11 @@ export default function DownloadsPage({ onOpenAdmission }) {
 
                   <div className="space-y-1.5 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 mb-4">
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-blue-700 shrink-0" />
+                      <Clock className="w-3.5 h-3.5 text-[#a22634] shrink-0" />
                       <span className="text-[11px] font-medium"><strong>Period:</strong> {item.period}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <FileText className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                      <FileText className="w-3.5 h-3.5 text-[#a22634] shrink-0" />
                       <span className="text-[11px] font-medium"><strong>Shift:</strong> {item.timing}</span>
                     </div>
                   </div>
@@ -409,8 +385,8 @@ export default function DownloadsPage({ onOpenAdmission }) {
                   <span className="text-[11px] text-slate-500 font-medium">
                     Session 2025–26
                   </span>
-                  <span className="text-[11px] text-amber-900 font-semibold bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200 flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-600" />
+                  <span className="text-[11px] text-[#a22634] font-semibold bg-[#a22634]/5 px-2.5 py-1 rounded-md border border-[#a22634]/25 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#a22634]" />
                     <span>Official Circular</span>
                   </span>
                 </div>
@@ -421,7 +397,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
       )}
 
       {/* 5. Examination Helpline Callout */}
-      <section className="py-14 bg-gradient-to-r from-[#0B1E48] via-[#102a6b] to-[#0B1E48] text-white text-center">
+      <section className="py-14 bg-gradient-to-r from-[#0b2a63] via-[#0b2a63] to-[#0b2a63] text-white text-center">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-2xl sm:text-3xl font-black heading-serif mb-3">
             Have Questions Regarding Syllabi or Datesheets?
@@ -432,13 +408,13 @@ export default function DownloadsPage({ onOpenAdmission }) {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/contact"
-              className="px-6 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
+              className="font-bebas px-6 py-2.5 rounded-full bg-[#faba28] hover:bg-[#faba28] text-[#0b2a63] text-base sm:text-lg uppercase tracking-wider transition-all shadow-lg hover:scale-105 cursor-pointer"
             >
               Contact Examination Desk
             </Link>
             <button
               onClick={onOpenAdmission}
-              className="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
+              className="font-bebas px-6 py-2.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base sm:text-lg uppercase tracking-wider transition-all cursor-pointer"
             >
               Apply for Admission 2026–27
             </button>

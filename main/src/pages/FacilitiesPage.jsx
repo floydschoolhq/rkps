@@ -11,6 +11,7 @@ import libraryImg from '@assets/photos/library.webp';
 import classroomImg from '@assets/photos/classroom-senior.webp';
 import smartClassImg from '@assets/photos/smart-classroom.webp';
 import sportsImg from '@assets/photos/sports-exercise.webp';
+import PageHero from '../components/ui/PageHero';
 
 const facilityBentoItems = [
   {
@@ -19,7 +20,7 @@ const facilityBentoItems = [
     subtitle: 'Spacious 12-acre verdant academic grounds, smart administrative facilities, and nurturing foundational learning spaces.',
     tag: 'Flagship Campus',
     category: 'academic',
-    tagColor: 'bg-[#f59e0b] text-slate-950 font-black',
+    tagColor: 'bg-[#faba28] text-[#0b2a63] font-black',
     image: exteriorImg,
     span: 'lg:col-span-2 lg:row-span-2 min-h-[380px] sm:min-h-[440px] lg:min-h-[500px]',
     icon: Building2,
@@ -33,7 +34,7 @@ const facilityBentoItems = [
     subtitle: '20,000+ literary volumes, high-speed digital research terminals, and quiet study carrels.',
     tag: 'Knowledge Repository',
     category: 'library',
-    tagColor: 'bg-blue-600 text-white font-bold',
+    tagColor: 'bg-[#0b2a63] text-white font-bold',
     image: libraryImg,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: BookOpen,
@@ -47,7 +48,7 @@ const facilityBentoItems = [
     subtitle: 'Multimedia smart classrooms, dedicated CBSE distinction mentorship, and advanced experimental science wings.',
     tag: 'Academic Distinction',
     category: 'academic',
-    tagColor: 'bg-emerald-600 text-white font-bold',
+    tagColor: 'bg-[#a22634] text-white font-bold',
     image: classroomImg,
     span: 'lg:col-span-1 min-h-[230px] sm:min-h-[240px]',
     icon: ShieldCheck,
@@ -62,7 +63,7 @@ const facilityBentoItems = [
     subtitle: 'Hands-on robotics kits, coding stations, 3D prototyping, and IoT experimentation benches.',
     tag: 'Future-Ready STEM',
     category: 'stem',
-    tagColor: 'bg-indigo-600 text-white font-bold',
+    tagColor: 'bg-[#0b2a63] text-white font-bold',
     image: smartClassImg,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Cpu,
@@ -76,7 +77,7 @@ const facilityBentoItems = [
     subtitle: 'Cricket turf, synthetic badminton, basketball courts, and NIS-certified athletics coaching.',
     tag: 'Sports Excellence',
     category: 'sports',
-    tagColor: 'bg-amber-500 text-slate-950 font-black',
+    tagColor: 'bg-[#a22634] text-white font-bold',
     image: sportsImg,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Trophy,
@@ -89,7 +90,7 @@ const facilityBentoItems = [
     subtitle: 'Acoustically engineered amphitheater for morning assemblies, theatrical drama, and annual symposia.',
     tag: 'Cultural Center',
     category: 'arts',
-    tagColor: 'bg-purple-600 text-white font-bold',
+    tagColor: 'bg-[#faba28] text-[#071f4c] font-bold',
     image: slide5Img,
     span: 'lg:col-span-1 min-h-[240px] sm:min-h-[260px]',
     icon: Music,
@@ -107,60 +108,36 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
     : facilityBentoItems.filter(item => item.category === activeCategory);
 
   return (
-    <div className="bg-[#faf9f6] text-slate-800 min-h-screen relative overflow-hidden">
+    <div className="bg-[#f8f9fa] text-slate-800 min-h-screen relative overflow-hidden">
       
       {/* 1. Header Section (Clean Institutional Architecture - No Pill) */}
-      <section className="pt-28 pb-10 sm:pt-32 sm:pb-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Breadcrumb Navigation */}
-        <nav className="flex items-center gap-2 text-xs text-slate-500 mb-6 font-medium">
-          <Link to="/" className="hover:text-amber-600 transition-colors">Home</Link>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="text-slate-500">Campus</span>
-          <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-          <span className="text-amber-600 font-bold">Facilities</span>
-        </nav>
-
-        {/* Clean Kicker */}
-        <p className="text-xs font-black uppercase tracking-widest text-amber-600 mb-2 font-mono">
-          CAMPUS INFRASTRUCTURE // 12-ACRE VERDANT GROUNDS
-        </p>
-
-        {/* Giant Headline */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 border-b border-slate-200">
-          <div>
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black heading-serif text-[#0B1E48] tracking-tight leading-tight">
-              Campus &amp; Facilities
-            </h1>
-            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mt-3 font-medium leading-relaxed">
-              Explore our 12-acre campus featuring modern academic wings, advanced STEM research laboratories, championship athletics arena, and grand central library.
-            </p>
-          </div>
-
-          {/* Quick Stats Badges */}
-          <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              12-Acre Green Campus
+      <PageHero
+        crumbs={[{ label: 'Campus' }, { label: 'Facilities' }]}
+        kicker="Campus Infrastructure • 12-Acre Green Grounds"
+        title="Campus &"
+        accent="Facilities"
+        subtitle="Explore our 12-acre campus featuring modern academic wings, advanced STEM laboratories, a championship athletics arena, and a grand central library."
+        image={exteriorImg}
+      >
+        <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+          {['12-Acre Green Campus', 'Smart Classrooms', 'Olympic Sports Arena'].map((b) => (
+            <span key={b} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider text-white">
+              <span className="w-1.5 h-1.5 rotate-45 bg-[#faba28]" />
+              {b}
             </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-[#f59e0b]" />
-              Smart Classrooms
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-bold text-slate-700 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-blue-600" />
-              Olympic Sports Arena
-            </span>
-          </div>
+          ))}
         </div>
+      </PageHero>
 
+      {/* Category filter */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-8 relative z-10">
         {/* Category Filter Chips */}
         <div className="flex flex-wrap items-center gap-2 pt-6">
           <button
             onClick={() => setActiveCategory('all')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'all'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
@@ -170,7 +147,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             onClick={() => setActiveCategory('academic')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'academic'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
@@ -180,7 +157,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             onClick={() => setActiveCategory('stem')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'stem'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
@@ -190,7 +167,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             onClick={() => setActiveCategory('sports')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'sports'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
@@ -200,7 +177,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             onClick={() => setActiveCategory('library')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'library'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
@@ -210,14 +187,13 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             onClick={() => setActiveCategory('arts')}
             className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-wider transition-all cursor-pointer ${
               activeCategory === 'arts'
-                ? 'bg-[#0B1E48] text-white shadow-md'
+                ? 'bg-[#0b2a63] text-white shadow-md'
                 : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 shadow-xs'
             }`}
           >
             Auditorium
           </button>
         </div>
-
       </section>
 
       {/* 2. Facilities Bento Grid (Matching Homepage Layout) */}
@@ -230,7 +206,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                 id={item.anchorId || item.id}
                 onClick={() => setSelectedFacility(item)}
                 className={`group relative rounded-3xl overflow-hidden cursor-pointer shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 border ${
-                  item.isFeatured ? 'border-[#f59e0b] ring-2 ring-[#f59e0b]/50' : 'border-slate-200/80 hover:border-slate-400'
+                  item.isFeatured ? 'border-[#faba28] ring-2 ring-[#faba28]/50' : 'border-slate-200/80 hover:border-slate-400'
                 } ${item.span}`}
               >
                 {/* Background Image */}
@@ -242,14 +218,14 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                 />
                 
                 {/* Contrast Gradient Overlays */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent opacity-90 group-hover:opacity-85 transition-opacity" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#071f4c] via-[#071f4c]/40 to-transparent opacity-90 group-hover:opacity-85 transition-opacity" />
 
                 {/* Top Badge Strip */}
                 <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
                   <span className={`text-[10px] sm:text-xs font-extrabold uppercase tracking-wider px-3 py-1 rounded-full shadow-sm ${item.tagColor}`}>
                     {item.tag}
                   </span>
-                  <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center group-hover:rotate-45 group-hover:bg-[#f59e0b] group-hover:text-slate-950 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white flex items-center justify-center group-hover:rotate-45 group-hover:bg-[#faba28] group-hover:text-[#0b2a63] transition-all duration-300">
                     <ArrowUpRight className="w-4 h-4" />
                   </div>
                 </div>
@@ -257,8 +233,8 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                 {/* Bottom Content Card */}
                 <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 text-white z-10">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className="w-1.5 h-4 bg-amber-400 rounded-full" />
-                    <h3 className="text-lg sm:text-xl font-bold heading-serif text-white group-hover:text-amber-300 transition-colors">
+                    <span className="w-1.5 h-4 bg-[#faba28] rounded-full" />
+                    <h3 className="text-lg sm:text-xl font-bold heading-serif text-white group-hover:text-[#faba28] transition-colors">
                       {item.title}
                     </h3>
                   </div>
@@ -275,12 +251,12 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
       {/* ─── Architectural Section Divider Line & Badge ─── */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 relative z-10">
         <div className="relative flex items-center justify-center">
-          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-amber-400/80 to-transparent shadow-xs" />
+          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-[#faba28]/80 to-transparent shadow-xs" />
           <div className="absolute px-5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 shadow-sm flex items-center gap-2.5 text-xs font-black uppercase tracking-wider text-slate-800 select-none">
-            <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b] shadow-[0_0_8px_#f59e0b] animate-pulse" />
-            <span className="text-slate-900 font-black">CAMPUS VISITS &amp; TOURS</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[#faba28] shadow-[0_0_8px_#faba28] animate-pulse" />
+            <span className="text-[#0b2a63] font-black">CAMPUS VISITS &amp; TOURS</span>
             <span className="text-slate-300 font-light">|</span>
-            <span className="text-amber-600 font-black flex items-center gap-1.5">
+            <span className="text-[#a22634] font-black flex items-center gap-1.5">
               <span>EXPLORE TODAY</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </span>
@@ -291,9 +267,9 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
       {/* 3. Campus Walkthrough CTA Banner */}
       <section className="pb-16 sm:pb-20 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-[#0B1E48] to-slate-950 text-white p-8 sm:p-12 lg:p-14 text-center relative overflow-hidden shadow-2xl border-t-2 border-t-amber-400/70 border-x border-b border-blue-900/40">
+          <div className="rounded-3xl bg-gradient-to-r from-[#071f4c] via-[#0b2a63] to-[#071f4c] text-white p-8 sm:p-12 lg:p-14 text-center relative overflow-hidden shadow-2xl border-t-2 border-t-[#faba28]/70 border-x border-b border-[#0b2a63]/40">
             
-            <span className="inline-block text-xs uppercase font-black tracking-widest text-[#f59e0b] mb-2 font-mono">
+            <span className="inline-block text-xs uppercase font-black tracking-widest text-[#faba28] mb-2">
               VISIT RADHA KRISHNA PUBLIC SCHOOL • ESTD. 1999
             </span>
 
@@ -308,15 +284,15 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <button
                 onClick={onOpenAdmission}
-                className="px-8 py-3.5 rounded-xl bg-[#f59e0b] hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-[0_4px_20px_rgba(245,158,11,0.4)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
+                className="font-bebas px-8 py-3.5 rounded-full bg-[#faba28] hover:bg-[#faba28] text-[#0b2a63] text-base sm:text-lg uppercase tracking-wider transition-all shadow-[0_4px_20px_rgba(245,158,11,0.4)] hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2"
               >
                 <span>Apply for Admission 2026–27</span>
-                <ArrowRight className="w-4 h-4 text-slate-950" />
+                <ArrowRight className="w-4 h-4 text-[#0b2a63]" />
               </button>
 
               <Link
                 to="/contact"
-                className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all cursor-pointer"
+                className="font-bebas px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base sm:text-lg uppercase tracking-wider transition-all cursor-pointer"
               >
                 Schedule Guided Tour
               </Link>
@@ -324,9 +300,9 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
               {onOpenVirtualTour && (
                 <button
                   onClick={onOpenVirtualTour}
-                  className="px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white text-xs sm:text-sm font-bold uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
+                  className="font-bebas px-6 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-white text-base sm:text-lg uppercase tracking-wider transition-all flex items-center gap-2 cursor-pointer"
                 >
-                  <Compass className="w-4 h-4 text-amber-400" />
+                  <Compass className="w-4 h-4 text-[#faba28]" />
                   <span>360° Virtual Tour</span>
                 </button>
               )}
@@ -339,21 +315,21 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
       {/* Interactive Facility Detail Lightbox Modal */}
       {selectedFacility && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#071f4c]/80 backdrop-blur-sm animate-in fade-in duration-200"
           onClick={() => setSelectedFacility(null)}
         >
           <div 
-            className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 text-slate-900"
+            className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 text-[#0b2a63]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header Image */}
-            <div className="relative h-60 sm:h-72 w-full bg-slate-950">
+            <div className="relative h-60 sm:h-72 w-full bg-[#071f4c]">
               <img 
                 src={selectedFacility.image} 
                 alt={selectedFacility.title}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#071f4c] via-[#071f4c]/30 to-transparent" />
               
               <button 
                 onClick={() => setSelectedFacility(null)}
@@ -376,7 +352,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
             {/* Modal Body */}
             <div className="p-6 sm:p-8 space-y-5 bg-slate-50/50">
               <div>
-                <h4 className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-1.5">
+                <h4 className="text-xs font-bold text-[#a22634] uppercase tracking-widest mb-1.5">
                   Facility Overview
                 </h4>
                 <p className="text-sm text-slate-700 leading-relaxed font-medium">
@@ -391,7 +367,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {selectedFacility.badgeFeatures.map((feat, idx) => (
                     <div key={idx} className="flex items-center gap-2 p-2.5 rounded-xl bg-white border border-slate-200/80 shadow-xs text-xs font-semibold text-slate-800">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#a22634] shrink-0" />
                       <span>{feat}</span>
                     </div>
                   ))}
@@ -406,7 +382,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   <button
                     onClick={() => setSelectedFacility(null)}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 text-xs font-bold uppercase tracking-wider transition-colors cursor-pointer"
+                    className="font-bebas w-full sm:w-auto px-5 py-2.5 rounded-full border border-slate-300 text-slate-700 hover:bg-slate-100 text-base sm:text-lg uppercase tracking-wider transition-colors cursor-pointer"
                   >
                     Close
                   </button>
@@ -415,7 +391,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
                       setSelectedFacility(null);
                       if (onOpenAdmission) onOpenAdmission();
                     }}
-                    className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-[#0B1E48] hover:bg-[#f59e0b] hover:text-slate-950 text-white text-xs font-bold uppercase tracking-wider text-center transition-all shadow-md cursor-pointer flex items-center justify-center gap-1.5"
+                    className="font-bebas w-full sm:w-auto px-5 py-2.5 rounded-full bg-[#0b2a63] hover:bg-[#faba28] hover:text-[#0b2a63] text-white text-base sm:text-lg uppercase tracking-wider text-center transition-all shadow-md cursor-pointer flex items-center justify-center gap-1.5"
                   >
                     <span>Schedule Campus Visit</span>
                     <ArrowRight className="w-3.5 h-3.5" />
