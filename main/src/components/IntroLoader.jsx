@@ -163,8 +163,6 @@ export default function IntroLoader() {
             </span>
           ))}
         </div>
-
-        <span className="mt-10 text-[11px] tracking-[0.3em] uppercase text-white/40">Tap to skip</span>
       </div>
     </div>
   );

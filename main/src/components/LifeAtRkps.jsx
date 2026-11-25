@@ -1,14 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { COLLEGE_MARQUEE, CAMPUS_STORIES, STUDENT_VOICES, SCHOOL_INFO } from '../data/rkpsData';
-import SnapSlider from './ui/SnapSlider';
-import VideoModal from './ui/VideoModal';
+import { COLLEGE_MARQUEE, CAMPUS_STORIES, SCHOOL_INFO } from '../data/rkpsData';
+import StudentTestimonials from './StudentTestimonials';
 import { useInView } from '../hooks/useInView';
-import { ExternalLink, ArrowRight, Play } from 'lucide-react';
+import { ExternalLink, ArrowRight } from 'lucide-react';
 
 export default function LifeAtRkps() {
   const [sectionRef, inView] = useInView();
-  const [playing, setPlaying] = useState(null);
 
   return (
     <div id="life">
@@ -76,39 +74,8 @@ export default function LifeAtRkps() {
             </div>
           </div>
 
-          {/* Student voices: SAS panel-7 style slider of reels, each opening the popup player */}
-          <SnapSlider
-            label="Student stories"
-            tone="dark"
-            className="sas-reveal-up mt-12 sm:mt-16 text-left"
-            itemClassName="basis-[68%] sm:basis-[calc(33.333%-16px)] lg:basis-[calc(25%-18px)]"
-          >
-            {STUDENT_VOICES.map((v) => (
-              <button
-                key={v.src}
-                type="button"
-                onClick={() => setPlaying(v)}
-                className="group relative block w-full aspect-[9/16] rounded-2xl overflow-hidden border-4 border-white/10 bg-black/40 shadow-2xl cursor-pointer"
-                aria-label={`Play ${v.title}`}
-              >
-                <img
-                  src={v.poster}
-                  alt=""
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 ease-sas group-hover:scale-105"
-                />
-                <span className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <span className="absolute inset-0 flex items-center justify-center">
-                  <span className="w-14 h-14 rounded-full bg-[#a22634]/90 text-white flex items-center justify-center ring-8 ring-white/15 transition-transform duration-300 group-hover:scale-110">
-                    <Play className="w-6 h-6 translate-x-0.5" fill="currentColor" />
-                  </span>
-                </span>
-                <span className="absolute inset-x-0 bottom-0 p-4 font-bebas text-xl tracking-wider uppercase text-white">
-                  {v.title}
-                </span>
-              </button>
-            ))}
-          </SnapSlider>
+          {/* Student video stories: centre reel plays, neighbours peek in on larger screens */}
+          <StudentTestimonials className="sas-reveal-up mt-12 sm:mt-16" />
 
           {/* 3-Column Photo Mosaic Grid (Staggered SAS Reveal, Clickable to /gallery) */}
           <div className="mt-12 sm:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -141,7 +108,6 @@ export default function LifeAtRkps() {
           </div>
         </div>
       </section>
-      <VideoModal video={playing} onClose={() => setPlaying(null)} />
     </div>
   );
 }

@@ -16,7 +16,9 @@ import {
   CheckCircle2,
   ShieldCheck,
   Shield,
-  Play
+  Play,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import { WHY_CHOOSE_TABS, STUDENT_VOICES } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
@@ -55,6 +57,7 @@ export default function WhyChooseRkps() {
 
   const active = WHY_CHOOSE_TABS[activeTabIdx];
   const [playing, setPlaying] = useState(null);
+  const [videoMuted, setVideoMuted] = useState(true);
   // SAS panel-2 has a popup video on its slides; the Students tab gets the student reels.
   const tabVideo = active.id === 'STUDENTS' ? STUDENT_VOICES[0] : null;
 
@@ -131,12 +134,42 @@ export default function WhyChooseRkps() {
           {/* Left Column: Overlapping Photo Card Positioned Relative & Animated from Bottom */}
           <div key={`img-${active.id}`} className="lg:col-span-5 xl:col-span-6 relative z-30 flex justify-center lg:justify-start animate-sas-overlap-rise">
             <div className="relative w-full max-w-xl lg:max-w-none aspect-[4/5] sm:aspect-[1/1] lg:aspect-auto lg:h-[540px] xl:h-[600px] -mt-8 sm:-mt-10 lg:-my-14 lg:-ml-16 xl:-ml-20 rounded-3xl lg:rounded-r-[120px] overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.7)] border-4 border-white/20 group">
-              <img
-                src={active.image}
-                alt={active.title}
-                style={{ objectPosition: active.imagePosition || '50% 50%' }}
-                className="w-full h-full object-cover transition-transform duration-700 ease-sas group-hover:scale-105"
-              />
+              {active.video ? (
+                <video
+                  // Large file: only fetched once this section is on screen; the photo shows until then.
+                  src={inView ? active.video : undefined}
+                  poster={active.image}
+                  autoPlay
+                  loop
+                  muted={videoMuted}
+                  ref={(el) => {
+                    if (el) el.muted = videoMuted; // React's `muted` prop alone can block iOS autoplay
+                  }}
+                  playsInline
+                  preload="none"
+                  aria-label={active.title}
+                  style={{ objectPosition: active.imagePosition || '50% 50%' }}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                <img
+                  src={active.image}
+                  alt={active.title}
+                  style={{ objectPosition: active.imagePosition || '50% 50%' }}
+                  className="w-full h-full object-cover transition-transform duration-700 ease-sas group-hover:scale-105"
+                />
+              )}
+
+              {active.video && (
+                <button
+                  type="button"
+                  onClick={() => setVideoMuted((m) => !m)}
+                  aria-label={videoMuted ? 'Unmute video' : 'Mute video'}
+                  className="absolute bottom-4 right-4 z-10 w-11 h-11 rounded-full bg-black/50 hover:bg-[#a22634] text-white flex items-center justify-center backdrop-blur-md border border-white/30 transition-colors duration-300 cursor-pointer"
+                >
+                  {videoMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5 text-[#faba28]" />}
+                </button>
+              )}
 
               {/* Crimson Tag Top Left */}
               <div className="absolute top-4 left-4 bg-[#a22634] text-white font-bebas text-sm sm:text-base px-4 py-1.5 rounded-md shadow-lg tracking-wider">

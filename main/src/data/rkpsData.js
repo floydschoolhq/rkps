@@ -105,11 +105,12 @@ export const WHY_CHOOSE_TABS = [
   {
     id: "EDUCATORS",
     tabLabel: "Educators",
-    tag: "EDUCATORS",
+    tag: "PRINCIPAL",
     kicker: "OUR EDUCATORS",
     title: "TEACHERS WHO RAISE THE STANDARD",
     desc: "Led by Principal Dr. Rupa Tyagi, RKPS teachers focus on the academic growth and holistic well-being of every child through dedicated classroom mentoring and continuous innovation.",
-    image: principalImg,
+    image: principalImg, // poster shown until the video loads
+    video: "/videos/lv_0_20261013064420.mp4",
     imagePosition: "50% 28%",
     stats: [
       { num: "100+", label: "Teachers & Mentors", icon: "GraduationCap" },
@@ -151,7 +152,7 @@ export const WHY_CHOOSE_TABS = [
   {
     id: "HISTORY",
     tabLabel: "History",
-    tag: "HISTORY",
+    tag: "DIRECTOR",
     kicker: "OUR HISTORY",
     title: "A LEGACY SINCE 2004",
     desc: "Radha Krishna Public School began in 2004 and is proudly affiliated with the Central Board of Secondary Education, New Delhi. It has steadily grown with the families and aspirations of Ghaziabad.",
@@ -408,6 +409,19 @@ export const STUDENT_VOICES = [
   title: `Student Story ${String(i + 1).padStart(2, "0")}`,
   src: `/videos/lv_0_${stamp}.mp4`,
   poster: `/videos/lv_0_${stamp}.jpg`
+}));
+
+// Named student testimonials for the "What's your story?" video carousel, using the first
+// three reels above. `quote` is shown only when filled in: add a student's own words once confirmed.
+export const STUDENT_TESTIMONIALS = [
+  { name: "Shlok Singh", grade: "Class VIII A", quote: "" },
+  { name: "Gorvi Chaudhary & Talbiyah Siddiqui", grade: "Class VIII A", quote: "" },
+  { name: "Akshit Kumar", grade: "Class VIII A", quote: "" }
+].map((t, i) => ({
+  ...t,
+  id: i + 1,
+  video: STUDENT_VOICES[i].src,
+  poster: STUDENT_VOICES[i].poster
 }));
 
 // Cards for the "Beyond the classroom" facts slider (SAS panel-5 .facts-slider).
