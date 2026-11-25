@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Send, GraduationCap } from 'lucide-react';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export default function AdmissionModal({ isOpen, onClose }) {
   const [form, setForm] = useState({
@@ -11,6 +12,7 @@ export default function AdmissionModal({ isOpen, onClose }) {
     notes: ''
   });
   const [done, setDone] = useState(false);
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -48,12 +50,13 @@ export default function AdmissionModal({ isOpen, onClose }) {
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 z-10 border-4 border-[#071f4c] animate-scaleUp">
+      <div className="modal-panel relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 z-10 border-4 border-[#071f4c] animate-scaleUp">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
+          aria-label="Close admission form"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>
@@ -107,8 +110,9 @@ export default function AdmissionModal({ isOpen, onClose }) {
                   onChange={(e) => setForm({ ...form, grade: e.target.value })}
                   className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#0b2a63] outline-none bg-white"
                 >
-                  <option>Playgroup / Nursery</option>
-                  <option>LKG / UKG</option>
+                  <option>Nursery</option>
+                  <option>LKG</option>
+                  <option>UKG</option>
                   <option>Class I</option>
                   <option>Class II</option>
                   <option>Class III</option>
@@ -119,9 +123,6 @@ export default function AdmissionModal({ isOpen, onClose }) {
                   <option>Class VIII</option>
                   <option>Class IX</option>
                   <option>Class X</option>
-                  <option>Class XI (Science)</option>
-                  <option>Class XI (Commerce)</option>
-                  <option>Class XI (Humanities)</option>
                 </select>
               </div>
 

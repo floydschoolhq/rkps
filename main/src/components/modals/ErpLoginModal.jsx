@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, Lock, User, Shield, CheckCircle } from 'lucide-react';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export default function ErpLoginModal({ isOpen, onClose, initialRole = 'parent' }) {
   const [role, setRole] = useState(initialRole);
@@ -7,6 +8,7 @@ export default function ErpLoginModal({ isOpen, onClose, initialRole = 'parent' 
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     setRole(initialRole);
@@ -39,10 +41,11 @@ export default function ErpLoginModal({ isOpen, onClose, initialRole = 'parent' 
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 animate-scaleUp">
+      <div className="modal-panel relative bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl border border-slate-200 animate-scaleUp">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors"
+          aria-label="Close login"
+          className="absolute top-3 right-3 w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center transition-colors"
         >
           <X className="w-5 h-5" />
         </button>

@@ -124,7 +124,7 @@ export default function PrincipalsDeskPage({ onOpenAdmission }) {
                 At RKPS, education is not an assembly line of memorised facts. It is an experiential odyssey. We have meticulously designed our CBSE curriculum to foster critical reasoning, bilingual eloquence, scientific inquiry, and collaborative creativity. In our classrooms, questions are celebrated, curiosity is rewarded, and mistakes are embraced as indispensable stepping stones toward mastery.
               </p>
               <p>
-                Equally fundamental is our dedication to emotional intelligence and moral strength. We want our students to not only score top percentiles in competitive examinations like IIT-JEE, NEET, and CUET, but also to possess the empathy to uplift others, the courage to stand for truth, and the resilience to weather life’s storms with equanimity.
+                Equally fundamental is our dedication to emotional intelligence and moral strength. We want our students to not only excel in their CBSE board examinations and Olympiads, but also to possess the empathy to uplift others, the courage to stand for truth, and the resilience to weather life’s storms with equanimity.
               </p>
               <p>
                 To our respected parents: thank you for placing your sacred trust in us. We consider the relationship between the school and home as an unbreakable partnership. To our dearest students: dream audaciously, work diligently, and never underestimate the power of your curiosity.

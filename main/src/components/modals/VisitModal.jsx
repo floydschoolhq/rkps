@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, CheckCircle2, Calendar, Clock, MapPin, Send } from 'lucide-react';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 
 export default function VisitModal({ isOpen, onClose }) {
   const [date, setDate] = useState('');
@@ -8,6 +9,7 @@ export default function VisitModal({ isOpen, onClose }) {
   const [phone, setPhone] = useState('');
   const [campus, setCampus] = useState('Main Campus (NH-9, Lal Kuan)');
   const [submitted, setSubmitted] = useState(false);
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -44,12 +46,13 @@ export default function VisitModal({ isOpen, onClose }) {
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 z-10 border-4 border-[#0b2a63] animate-scaleUp">
+      <div className="modal-panel relative w-full max-w-lg bg-white rounded-3xl shadow-2xl p-6 sm:p-8 z-10 border-4 border-[#0b2a63] animate-scaleUp">
         
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
+          aria-label="Close visit form"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 w-11 h-11 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 transition-colors"
         >
           <X className="w-4 h-4" />
         </button>

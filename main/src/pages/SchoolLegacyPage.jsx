@@ -14,7 +14,7 @@ export default function SchoolLegacyPage({ onOpenAdmission }) {
     {
       year: '2005',
       title: 'CBSE Affiliation Milestone',
-      desc: 'Awarded formal CBSE Senior Secondary affiliation (Affiliation #0b2a632), introducing Science, Commerce, and Humanities streams with dedicated collegiate labs.'
+      desc: 'Awarded formal CBSE Secondary affiliation (Affiliation #2132212) for classes up to Class X, with dedicated science and computer labs.'
     },
     {
       year: '2012',

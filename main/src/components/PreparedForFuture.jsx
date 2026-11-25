@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ALUMNI_TOPPERS, PARENT_TESTIMONIALS } from '../data/rkpsData';
 import { useInView } from '../hooks/useInView';
 import TabStrip from './ui/TabStrip';
 import Portrait from './ui/Portrait';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 import { ChevronLeft, ChevronRight, Star, X, Award } from 'lucide-react';
 
 /**
@@ -37,8 +38,8 @@ function ScholarCapBooksIcon({ className = 'w-10 h-10' }) {
 const BOARD_NUMBERS = [
   { num: '100%', label: 'CBSE Board Pass Rate' },
   { num: '99.0%', label: 'Highest Class X Score' },
-  { num: '98.8%', label: 'Highest Class XII Score' },
-  { num: '125+', label: 'IIT / NEET / DU / CUET Selections' }
+  { num: '6', label: 'CBSE 2025 Class X Subject Toppers' },
+  { num: '13', label: 'Classes from Nursery to Class X' }
 ];
 
 export default function PreparedForFuture() {
@@ -51,6 +52,36 @@ export default function PreparedForFuture() {
 
   const prevSlide = () => setCenterIdx((prev) => (prev - 1 + total) % total);
   const nextSlide = () => setCenterIdx((prev) => (prev + 1) % total);
+
+  useBodyScrollLock(selectedProfileIdx !== null);
+
+  // Touch swipe on the portrait carousel. A swipe must not also count as a tap that opens the profile.
+  const touch = useRef(null);
+  const swiped = useRef(false);
+  const onTouchStart = (e) => {
+    const t = e.touches[0];
+    touch.current = { x: t.clientX, y: t.clientY };
+    swiped.current = false;
+  };
+  const onTouchEnd = (e) => {
+    if (!touch.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touch.current.x;
+    const dy = t.clientY - touch.current.y;
+    touch.current = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      swiped.current = true;
+      if (dx < 0) nextSlide();
+      else prevSlide();
+    }
+  };
+  const openProfile = (idx) => {
+    if (swiped.current) {
+      swiped.current = false;
+      return;
+    }
+    setSelectedProfileIdx(idx);
+  };
 
   // Close profile modal on Escape and cycle with Left/Right arrows
   useEffect(() => {
@@ -88,8 +119,8 @@ export default function PreparedForFuture() {
             <span className="text-[#a22634]">THE FUTURE</span>
           </h2>
           <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-            University and career readiness is an important milestone in the learning journey cherished by the RKPS community.
-            Our graduates are remarkable young adults, equipped not just for college entrance examinations but for life beyond.
+            The CBSE Class X board examination is an important milestone in the learning journey cherished by the RKPS community.
+            Our students leave Class X as confident young people, prepared not just for their board results but for the next stage of school and life beyond.
             After all, education should inspire, not just instruct.
           </p>
         </div>
@@ -135,7 +166,7 @@ export default function PreparedForFuture() {
             <button
               onClick={prevSlide}
               className="absolute left-3 sm:left-6 lg:left-[11.2%] top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#a22634] hover:bg-[#7a1f2b] text-white flex items-center justify-center shadow-[0_6px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-              aria-label="Previous graduate profile"
+              aria-label="Previous topper profile"
             >
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
@@ -144,13 +175,17 @@ export default function PreparedForFuture() {
             <button
               onClick={nextSlide}
               className="absolute right-3 sm:right-6 lg:right-[11.2%] top-1/2 -translate-y-1/2 z-30 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[#a22634] hover:bg-[#7a1f2b] text-white flex items-center justify-center shadow-[0_6px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer"
-              aria-label="Next graduate profile"
+              aria-label="Next topper profile"
             >
               <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </button>
 
             {/* Full-Width 5-Card Track: 5 x 25vw = 125vw so 3 cards fill center and 2 peek on edges */}
-            <div className="flex items-stretch justify-center gap-3 sm:gap-4 w-full">
+            <div
+              className="flex items-stretch justify-center gap-3 sm:gap-4 w-full touch-pan-y"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               {visibleSlots.map(({ offset, idx, scholar }) => {
                 // On mobile show only center card; on md show 3 (-1, 0, +1); on lg+ show all 5 with outer peeking
                 const visibilityClass =
@@ -163,7 +198,7 @@ export default function PreparedForFuture() {
                 return (
                   <article
                     key={`${offset}-${scholar.id}`}
-                    onClick={() => setSelectedProfileIdx(idx)}
+                    onClick={() => openProfile(idx)}
                     className={`${visibilityClass} relative shrink-0 w-[86vw] sm:w-[68vw] md:w-[31.5vw] lg:w-[24.8vw] max-w-[380px] aspect-[344/510] max-h-[560px] bg-[#131313] overflow-hidden group cursor-pointer select-none`}
                   >
                     {/* Full-Bleed Portrait Image */}
@@ -313,17 +348,17 @@ export default function PreparedForFuture() {
             if (e.target === e.currentTarget) setSelectedProfileIdx(null);
           }}
         >
-          <div className="relative bg-white max-w-3xl w-full shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-12 animate-scaleUp border-b-4 border-[#a22634]">
+          <div className="modal-panel relative bg-white max-w-3xl w-full shadow-2xl grid grid-cols-1 md:grid-cols-12 animate-scaleUp border-b-4 border-[#a22634]">
             <button
               onClick={() => setSelectedProfileIdx(null)}
-              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-[#a22634] hover:bg-[#7a1f2b] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
+              className="absolute top-3 right-3 z-20 w-11 h-11 rounded-full bg-[#a22634] hover:bg-[#7a1f2b] text-white flex items-center justify-center transition-colors cursor-pointer shadow-md"
               aria-label="Close profile"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Left Portrait */}
-            <div className="md:col-span-5 aspect-[4/5] md:aspect-auto bg-[#071f4c] relative">
+            <div className="md:col-span-5 aspect-[4/3] sm:aspect-[4/5] md:aspect-auto bg-[#071f4c] relative">
               <Portrait
                 src={activeProfile.image}
                 name={activeProfile.name}
@@ -367,14 +402,14 @@ export default function PreparedForFuture() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => setSelectedProfileIdx((p) => (p - 1 + total) % total)}
-                    className="w-9 h-9 rounded-full border border-slate-300 hover:bg-[#0b2a63] hover:text-white hover:border-[#0b2a63] flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-11 h-11 rounded-full border border-slate-300 hover:bg-[#0b2a63] hover:text-white hover:border-[#0b2a63] flex items-center justify-center transition-colors cursor-pointer"
                     aria-label="Previous scholar"
                   >
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
                     onClick={() => setSelectedProfileIdx((p) => (p + 1) % total)}
-                    className="w-9 h-9 rounded-full border border-slate-300 hover:bg-[#0b2a63] hover:text-white hover:border-[#0b2a63] flex items-center justify-center transition-colors cursor-pointer"
+                    className="w-11 h-11 rounded-full border border-slate-300 hover:bg-[#0b2a63] hover:text-white hover:border-[#0b2a63] flex items-center justify-center transition-colors cursor-pointer"
                     aria-label="Next scholar"
                   >
                     <ChevronRight className="w-4 h-4" />

@@ -236,12 +236,11 @@ export default function ContactPage() {
                     className="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a63] text-sm bg-white"
                   >
                     <option value="">Select Grade / Class</option>
-                    <option value="Pre-Nursery">Pre-Nursery / Nursery</option>
-                    <option value="Kindergarten">Kindergarten (KG)</option>
+                    <option value="Nursery">Nursery</option>
+                    <option value="Kindergarten">Kindergarten (LKG / UKG)</option>
                     <option value="Grade 1-5">Grade 1 to 5 (Primary)</option>
                     <option value="Grade 6-8">Grade 6 to 8 (Middle)</option>
                     <option value="Grade 9-10">Grade 9 to 10 (Secondary)</option>
-                    <option value="Grade 11-12">Grade 11 to 12 (Senior Secondary)</option>
                   </select>
                 </div>
 

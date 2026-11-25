@@ -170,10 +170,10 @@ export const WHY_CHOOSE_TABS = [
     tag: "STUDENTS",
     kicker: "OUR STUDENTS",
     title: "A FULL STUDENT LIFE",
-    desc: "Students from Playgroup to Class X engage in challenging classroom curricula while actively taking part in sports, martial arts, abacus, Vedic mathematics, and performing arts.",
+    desc: "Students from Nursery to Class X engage in challenging classroom curricula while actively taking part in sports, martial arts, abacus, Vedic mathematics, and performing arts.",
     image: slide3Img,
     stats: [
-      { num: "14", label: "Classes (Play to Class X)", icon: "BookOpen" },
+      { num: "13", label: "Classes (Nursery to Class X)", icon: "BookOpen" },
       { num: "2,500+", label: "Enrolled Scholars", icon: "Users" },
       { num: "4", label: "Houses & Activity Guilds", icon: "Shield" },
       { num: "30+", label: "Co-Curricular Activities", icon: "Trophy" }
@@ -186,7 +186,7 @@ export const LEARNING_STAGES = [
     id: "pre-primary",
     label: "Pre Primary",
     stageName: "Pre Primary Years",
-    ageRange: "Play, Nursery, LKG & UKG • Ages 3–5",
+    ageRange: "Nursery, LKG & UKG • Ages 3–5",
     desc: "A calm, structured first step into school. Children build early language fluency, phonics, number sense, and social skills in a safe, play-way, and well-supervised setting.",
     btnText: "LEARN MORE ABOUT PRE PRIMARY",
     image: slide5Img,
@@ -217,7 +217,7 @@ export const LEARNING_STAGES = [
     label: "Secondary",
     stageName: "Secondary School",
     ageRange: "Classes IX & X • Ages 14–16",
-    desc: "Focused CBSE preparation with careful subject guidance, structured mock assessments, and steady academic and career support through the milestone board years.",
+    desc: "Focused CBSE preparation with careful subject guidance, structured mock assessments, and steady academic support through the milestone Class X board year.",
     btnText: "LEARN MORE ABOUT SECONDARY SCHOOL",
     image: slide4Img,
     highlights: ["Board Examination Mastery", "Regular Revision & Diagnostic Tests", "Personalized Mentor Guidance"]

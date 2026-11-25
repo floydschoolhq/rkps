@@ -6,26 +6,6 @@ import PageHero from '../components/ui/PageHero';
 
 const curriculumDownloads = [
   {
-    id: 'curr-1',
-    title: 'Senior Secondary (Class XI & XII) Science Stream Syllabus',
-    category: 'Senior Wing (XI-XII)',
-    grade: 'Class 11 & 12',
-    subjects: 'Physics, Chemistry, Mathematics, Biology, Computer Science, Physical Education',
-    year: '2026–27',
-    date: 'Academic Year 2026–27',
-    desc: 'Unit-wise weightage, CBSE curriculum structure, practical experiment lists, and evaluation scheme.'
-  },
-  {
-    id: 'curr-2',
-    title: 'Senior Secondary (Class XI & XII) Commerce & Humanities Syllabus',
-    category: 'Senior Wing (XI-XII)',
-    grade: 'Class 11 & 12',
-    subjects: 'Accountancy, Business Studies, Economics, History, Pol. Science, Applied Maths, English Core',
-    year: '2026–27',
-    date: 'Academic Year 2026–27',
-    desc: 'CBSE syllabus outline, project work guidelines, case study methodology, and board marking rubrics.'
-  },
-  {
     id: 'curr-3',
     title: 'Secondary School (Class IX & X) CBSE Board Curriculum',
     category: 'Secondary (IX-X)',
@@ -70,16 +50,16 @@ const curriculumDownloads = [
 const datesheetDownloads = [
   {
     id: 'date-1',
-    title: 'Annual Board Examination Schedule 2026 (Class X & XII)',
+    title: 'Annual Board Examination Schedule 2026 (Class X)',
     category: 'CBSE Board Examinations',
     period: 'February – April 2026',
     timing: '10:30 AM – 01:30 PM (Morning Shift)',
     status: 'Official Schedule',
-    desc: 'Official CBSE date sheet for All India Secondary School Examination (AISSE) and Senior School Certificate (AISSCE).'
+    desc: 'Official CBSE date sheet for the All India Secondary School Examination (AISSE), Class X.'
   },
   {
     id: 'date-2',
-    title: 'Annual Final Term Examinations Timetable (Class IX & XI)',
+    title: 'Annual Final Term Examinations Timetable (Class IX)',
     category: 'Internal Assessment',
     period: 'February – March 2026',
     timing: '09:00 AM – 12:15 PM',
@@ -94,15 +74,6 @@ const datesheetDownloads = [
     timing: '08:30 AM – 11:30 AM',
     status: 'Active Schedule',
     desc: 'Mid-session unit test evaluation schedule and syllabus coverage outline for primary & middle wings.'
-  },
-  {
-    id: 'date-4',
-    title: 'CBSE Class XII Practical & Viva-Voce Examination Schedule',
-    category: 'Practical Examinations',
-    period: 'January 2026',
-    timing: 'Batch 1: 08:30 AM | Batch 2: 12:30 PM',
-    status: 'Concluded',
-    desc: 'External examiner roster, physics/chemistry/biology project submission criteria and lab viva schedules.'
   },
   {
     id: 'date-5',
@@ -227,7 +198,7 @@ export default function DownloadsPage({ onOpenAdmission }) {
                   Radha Krishna Public School Fee Structure (2026–27)
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
-                  Official certified fee schedule covering pre-primary to senior secondary grades, payment timelines, and admission criteria.
+                  Official certified fee schedule covering Nursery to Class X, payment timelines, and admission criteria.
                 </p>
                 <div className="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-300">
                   <span className="flex items-center gap-1 font-semibold text-emerald-400">

@@ -16,7 +16,7 @@ export default function AdmissionsPage({ onOpenAdmission }) {
     {
       num: '02',
       title: 'Interaction & Aptitude',
-      desc: 'Informal student-parent interaction for early years; foundational aptitude assessment for Grades I to XI.'
+      desc: 'Informal student-parent interaction for early years; foundational aptitude assessment for Grades I to X.'
     },
     {
       num: '03',
@@ -31,16 +31,14 @@ export default function AdmissionsPage({ onOpenAdmission }) {
   ];
 
   const eligibility = [
-    { grade: 'Pre-Nursery', age: '2.5 to 3 Years', cutoff: 'As of 31st March 2026' },
     { grade: 'Nursery', age: '3 to 4 Years', cutoff: 'As of 31st March 2026' },
-    { grade: 'Kindergarten (KG)', age: '4 to 5 Years', cutoff: 'As of 31st March 2026' },
+    { grade: 'Kindergarten (LKG / UKG)', age: '4 to 5 Years', cutoff: 'As of 31st March 2026' },
     { grade: 'Grade I', age: '5 to 6 Years', cutoff: 'As of 31st March 2026' },
-    { grade: 'Grades II – X', age: 'Based on previous class TC & CBSE age norms', cutoff: 'Merit in entrance assessment' },
-    { grade: 'Grade XI', age: 'Based on Class X Board Marks & Stream Eligibility', cutoff: 'Science, Commerce & Humanities' }
+    { grade: 'Grades II – X', age: 'Based on previous class TC & CBSE age norms', cutoff: 'Merit in entrance assessment' }
   ];
 
   const documents = [
-    'Original Birth Certificate issued by Municipal Corporation (for Pre-Nursery to Grade I)',
+    'Original Birth Certificate issued by Municipal Corporation (for Nursery to Grade I)',
     'Transfer Certificate (TC) countersigned by appropriate education authority (Grade II onwards)',
     'Previous year’s final report card / mark sheet from recognized school',
     '4 passport-size photographs of the student and 2 each of both parents / guardians',
@@ -58,8 +56,8 @@ export default function AdmissionsPage({ onOpenAdmission }) {
       a: 'Yes, RKPS maintains a dedicated fleet of GPS-monitored, air-conditioned school buses with CCTV surveillance and female attendants covering all major residential corridors in Indirapuram, Vaishali, Vasundhara, Crossing Republik, Noida, and East Delhi.'
     },
     {
-      q: 'What streams are offered in Class XI and XII?',
-      a: 'We offer all three recognized CBSE streams: Science (Medical & Non-Medical with AI/Computer Science), Commerce (with Mathematics/Applied Maths/Informatics Practices), and Humanities (Political Science, History, Economics, Psychology).'
+      q: 'Which classes does RKPS offer?',
+      a: 'RKPS offers Nursery, LKG and UKG, followed by Classes I to X under the CBSE curriculum. Classes XI and XII are not offered.'
     },
     {
       q: 'Does RKPS offer scholarship programs for meritorious students?',

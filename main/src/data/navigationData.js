@@ -57,10 +57,10 @@ export const MAIN_MENU_CATEGORIES = [
     label: 'Academics',
     to: '/#stages',
     subLinks: [
-      { label: 'Pre-Primary Wing (Play–UKG)', to: '/#stages' },
+      { label: 'Pre-Primary Wing (Nursery–UKG)', to: '/#stages' },
       { label: 'Primary School (Grades I–V)', to: '/#stages' },
       { label: 'Middle School (Grades VI–VIII)', to: '/#stages' },
-      { label: 'Secondary & Sr. Secondary (IX–XII)', to: '/#stages' },
+      { label: 'Secondary School (Grades IX–X)', to: '/#stages' },
       { label: 'CBSE Curriculum & Syllabus', to: '/downloads#curriculum' },
       { label: 'Exam Datesheet & Schedules', to: '/downloads#datesheet' }
     ]
@@ -94,7 +94,7 @@ export const MAIN_MENU_CATEGORIES = [
     label: 'Community & Portals',
     to: '/contact',
     subLinks: [
-      { label: 'Graduates & CBSE Toppers', to: '/#future' },
+      { label: 'CBSE Class X Toppers', to: '/#future' },
       { label: 'Parent Voices & Testimonials', to: '/#future' },
       { label: 'Parent ERP Portal Login', action: 'erp-parent' },
       { label: 'Student Login Portal', action: 'erp-student' },
@@ -176,7 +176,7 @@ export const SEARCH_INDEX = [
   { title: 'Olympic Sports Arena & Grounds', category: 'Facilities', keywords: 'sports cricket basketball football taekwondo yoga ground athletics', to: '/facilities#ground' },
   { title: 'Interactive Virtual Campus Tour', category: 'Action', keywords: 'virtual tour 360 campus spots photos', action: 'virtual-tour' },
   { title: 'Academic Downloads & Mandatory Disclosure', category: 'Downloads', keywords: 'downloads pdf syllabus curriculum datesheet mandatory disclosure cbse', to: '/downloads' },
-  { title: 'CBSE Curriculum & Syllabus', category: 'Downloads', keywords: 'cbse curriculum syllabus science commerce humanities', to: '/downloads#curriculum' },
+  { title: 'CBSE Curriculum & Syllabus', category: 'Downloads', keywords: 'cbse curriculum syllabus class x secondary middle primary', to: '/downloads#curriculum' },
   { title: 'Examination Datesheets & Schedules', category: 'Downloads', keywords: 'exam datesheet schedule calendar timetable', to: '/downloads#datesheet' },
   { title: 'Campus Photo & Media Gallery', category: 'Gallery', keywords: 'gallery photos pictures events sports annual day', to: '/gallery' },
   { title: 'Parent ERP Portal Login', category: 'Portal', keywords: 'erp login parent portal attendance report card fee payment', action: 'erp-parent' },
@@ -185,5 +185,5 @@ export const SEARCH_INDEX = [
   { title: 'Contact Us & Campus Map', category: 'Contact', keywords: 'contact phone email address lal kuan pratap vihar ghaziabad map location', to: '/contact' },
   { title: 'Learning Stages (Pre-Primary to Secondary)', category: 'Academics', keywords: 'pre primary nursery lkg ukg middle secondary stages wings', to: '/#stages' },
   { title: 'Cultivating Exceptional Thinkers (Co-Curriculars)', category: 'Student Life', keywords: 'co-curriculars clubs experiential service learning activities music dance', to: '/#beyond' },
-  { title: 'CBSE Board Toppers & Alumni Voices', category: 'Results', keywords: 'toppers alumni results board iit srcc stephens parents testimonial', to: '/#future' }
+  { title: 'CBSE Board Toppers & Alumni Voices', category: 'Results', keywords: 'toppers alumni results board class x parents testimonial', to: '/#future' }
 ];

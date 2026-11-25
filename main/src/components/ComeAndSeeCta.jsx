@@ -135,8 +135,9 @@ export default function ComeAndSeeCta({ onOpenAdmission, onOpenVisit }) {
                     onChange={(e) => setFormData({ ...formData, c: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-[#0b2a63] outline-none bg-white"
                   >
-                    <option>Playgroup / Nursery</option>
-                    <option>LKG / UKG</option>
+                    <option>Nursery</option>
+                    <option>LKG</option>
+                    <option>UKG</option>
                     <option>Class I</option>
                     <option>Class II</option>
                     <option>Class III</option>
@@ -147,9 +148,6 @@ export default function ComeAndSeeCta({ onOpenAdmission, onOpenVisit }) {
                     <option>Class VIII</option>
                     <option>Class IX</option>
                     <option>Class X</option>
-                    <option>Class XI (Science)</option>
-                    <option>Class XI (Commerce)</option>
-                    <option>Class XI (Humanities)</option>
                   </select>
                 </div>
               </div>

@@ -19,6 +19,7 @@ import sportsSkippingImg from '@assets/photos/sports-skipping.webp';
 import trophyStudentImg from '@assets/photos/trophy-student-1.webp';
 import studentsSmilingImg from '@assets/photos/students-smiling.webp';
 import PageHero from '../components/ui/PageHero';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
 // Real RKPS photos only. Add new ones by importing them from src/assets.
 const galleryPhotos = [
@@ -96,6 +97,7 @@ const featuredAccordionItems = [
 export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedPhoto, setSelectedPhoto] = useState(null);
+  useBodyScrollLock(!!selectedPhoto);
 
   const filteredPhotos = activeCategory === 'all'
     ? galleryPhotos
@@ -228,22 +230,22 @@ export default function GalleryPage({ onOpenAdmission, onOpenVirtualTour }) {
           onClick={() => setSelectedPhoto(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-[#0b2a63] rounded-2xl overflow-hidden shadow-2xl border border-white/20"
+            className="modal-panel relative max-w-4xl w-full bg-[#0b2a63] rounded-2xl shadow-2xl border border-white/20"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setSelectedPhoto(null)}
-              className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/60 hover:bg-black/90 text-white transition-all cursor-pointer"
+              className="absolute top-3 right-3 z-20 w-11 h-11 flex items-center justify-center rounded-full bg-black/60 hover:bg-black/90 text-white transition-all cursor-pointer"
               aria-label="Close lightbox"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="relative max-h-[75vh] w-full bg-black flex items-center justify-center">
+            <div className="relative w-full bg-black flex items-center justify-center">
               <img
                 src={selectedPhoto.image}
                 alt={selectedPhoto.title}
-                className="max-h-[70vh] w-auto max-w-full object-contain"
+                className="max-h-[60svh] sm:max-h-[70vh] w-auto max-w-full object-contain"
               />
             </div>
 

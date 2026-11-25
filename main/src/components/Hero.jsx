@@ -70,10 +70,20 @@ export default function Hero({ onNavigateAction, onScrollToStages }) {
 
   const active = HERO_SLIDES[currentSlide];
 
+  // Load slide media only when it's showing or up next, so phones don't download every slide up front.
+  const [loaded, setLoaded] = useState(() => new Set([0, 1 % HERO_SLIDES.length]));
+  useEffect(() => {
+    setLoaded((prev) => {
+      const next = (currentSlide + 1) % HERO_SLIDES.length;
+      if (prev.has(currentSlide) && prev.has(next)) return prev;
+      return new Set([...prev, currentSlide, next]);
+    });
+  }, [currentSlide]);
+
   return (
     <section
       ref={sectionRef}
-      className="relative w-full h-screen min-h-[640px] max-h-[1080px] overflow-hidden bg-[#071f4c]"
+      className="relative w-full h-screen h-svh min-h-[520px] sm:min-h-[640px] max-h-[1080px] overflow-hidden bg-[#071f4c]"
       id="hero"
     >
       {/* Background Media Layers with SAS Smooth Crossfade & Subtle Ken Burns Zoom */}
@@ -87,7 +97,7 @@ export default function Hero({ onNavigateAction, onScrollToStages }) {
               isCurrent ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
             }`}
           >
-            {slide.type === 'video' ? (
+            {!loaded.has(index) ? null : slide.type === 'video' ? (
               <video
                 ref={videoRef}
                 src={slide.src}

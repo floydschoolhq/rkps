@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight, Eye, Sparkles } from 'lucide-react';
+import { useBodyScrollLock } from '../../hooks/useBodyScrollLock';
 import exteriorImg from '@assets/Radha Krishna Public School Exterior.webp';
 import libraryImg from '@assets/photos/library.webp';
 import smartClassImg from '@assets/photos/smart-classroom.webp';
@@ -49,6 +50,7 @@ const tourSpots = [
 
 export default function VirtualTourModal({ isOpen, onClose }) {
   const [activeIdx, setActiveIdx] = useState(0);
+  useBodyScrollLock(isOpen);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -80,16 +82,17 @@ export default function VirtualTourModal({ isOpen, onClose }) {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200 animate-scaleUp">
+      <div className="modal-panel relative bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 animate-scaleUp">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center transition-colors shadow"
+          aria-label="Close virtual tour"
+          className="absolute top-3 right-3 z-20 w-11 h-11 rounded-full bg-slate-900/70 hover:bg-slate-900 text-white flex items-center justify-center transition-colors shadow"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Media Frame */}
-        <div className="relative h-72 sm:h-96 bg-slate-950 overflow-hidden">
+        <div className="relative h-56 sm:h-96 bg-slate-950 overflow-hidden rounded-t-[20px]">
           <img
             src={current.image}
             alt={current.title}
@@ -100,13 +103,15 @@ export default function VirtualTourModal({ isOpen, onClose }) {
           {/* Nav buttons */}
           <button
             onClick={prevSpot}
-            className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-blue-900 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+            aria-label="Previous stop"
+            className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/60 hover:bg-blue-900 text-white flex items-center justify-center backdrop-blur-sm transition-all"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
           <button
             onClick={nextSpot}
-            className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/60 hover:bg-blue-900 text-white flex items-center justify-center backdrop-blur-sm transition-all"
+            aria-label="Next stop"
+            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-slate-900/60 hover:bg-blue-900 text-white flex items-center justify-center backdrop-blur-sm transition-all"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
@@ -131,13 +136,13 @@ export default function VirtualTourModal({ isOpen, onClose }) {
             {current.description}
           </p>
 
-          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between">
-            <div className="flex gap-2">
+          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-3">
+            <div className="flex gap-2 overflow-x-auto no-scrollbar min-w-0">
               {tourSpots.map((spot, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveIdx(i)}
-                  className={`w-12 h-12 rounded-lg overflow-hidden border-2 transition-all ${
+                  className={`w-12 h-12 shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
                     i === activeIdx ? 'border-amber-500 scale-105 shadow-md' : 'border-slate-200 opacity-60 hover:opacity-100'
                   }`}
                 >
@@ -146,7 +151,7 @@ export default function VirtualTourModal({ isOpen, onClose }) {
               ))}
             </div>
 
-            <div className="text-xs font-bold text-slate-500">
+            <div className="text-xs font-bold text-slate-500 shrink-0">
               {activeIdx + 1} of {tourSpots.length}
             </div>
           </div>

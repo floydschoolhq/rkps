@@ -31,15 +31,15 @@ export default function WhatsNewDrawer({ isOpen, onClose, onNavigateAction }) {
     {
       date: 'Nov 2026',
       tag: 'Admissions',
-      title: 'Admissions Open for Session 2026–27 (Pre-Nursery to Class XI)',
-      desc: 'Limited seats available across Foundational, Primary, Middle, and Senior Secondary wings.',
+      title: 'Admissions Open for Session 2026–27 (Nursery to Class X)',
+      desc: 'Limited seats available across Pre-Primary, Primary, Middle, and Secondary wings.',
       to: '/admissions'
     },
     {
       date: 'Oct 2026',
       tag: 'CBSE Distinction',
-      title: '100% CBSE Board Results with District & Subject Toppers',
-      desc: 'Scholars achieved 99.0% in Class X and 98.8% in Class XII with IIT Delhi, SRCC, and St. Stephen’s admissions.',
+      title: '100% CBSE Class X Board Results with Subject Toppers',
+      desc: 'Our Class X scholars achieved a 100% pass record, with a highest score of 99.0% in the CBSE 2025 board examinations.',
       to: '/#future'
     },
     {

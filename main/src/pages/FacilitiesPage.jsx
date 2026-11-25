@@ -12,6 +12,7 @@ import classroomImg from '@assets/photos/classroom-senior.webp';
 import smartClassImg from '@assets/photos/smart-classroom.webp';
 import sportsImg from '@assets/photos/sports-exercise.webp';
 import PageHero from '../components/ui/PageHero';
+import { useBodyScrollLock } from '../hooks/useBodyScrollLock';
 
 const facilityBentoItems = [
   {
@@ -25,7 +26,7 @@ const facilityBentoItems = [
     span: 'lg:col-span-2 lg:row-span-2 min-h-[380px] sm:min-h-[440px] lg:min-h-[500px]',
     icon: Building2,
     badgeFeatures: ['12-Acre Campus', 'Estd. 1999', 'CCTV Secured'],
-    details: 'Spanning 12 verdant acres in Ghaziabad, our flagship campus houses architect-designed academic wings, sprawling sports grounds, multimedia smart classrooms, and specialized research blocks for holistic development from Pre-Nursery to Grade XII.'
+    details: 'Spanning 12 verdant acres in Ghaziabad, our flagship campus houses architect-designed academic wings, sprawling sports grounds, multimedia smart classrooms, and specialized research blocks for holistic development from Nursery to Class X.'
   },
   {
     id: 'library',
@@ -44,7 +45,7 @@ const facilityBentoItems = [
   {
     id: 'senior-wing',
     anchorId: 'classrooms',
-    title: 'Senior Academic Wing',
+    title: 'Secondary Academic Wing',
     subtitle: 'Multimedia smart classrooms, dedicated CBSE distinction mentorship, and advanced experimental science wings.',
     tag: 'Academic Distinction',
     category: 'academic',
@@ -54,7 +55,7 @@ const facilityBentoItems = [
     icon: ShieldCheck,
     isFeatured: true, // Signature amber border from reference design
     badgeFeatures: ['Smart Classrooms', 'CBSE Distinction', 'Expert Mentors'],
-    details: 'Dedicated collegiate wings for Science, Commerce, and Humanities with integrated preparation for IIT-JEE, NEET, and CUET under seasoned senior faculty.'
+    details: 'Smart classrooms for Classes IX and X with focused CBSE board preparation, regular revision tests, and subject mentoring by experienced faculty.'
   },
   {
     id: 'stem-lab',
@@ -102,6 +103,7 @@ const facilityBentoItems = [
 export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
   const [selectedFacility, setSelectedFacility] = useState(null);
   const [activeCategory, setActiveCategory] = useState('all');
+  useBodyScrollLock(!!selectedFacility);
 
   const filteredItems = activeCategory === 'all' 
     ? facilityBentoItems 
@@ -319,11 +321,11 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
           onClick={() => setSelectedFacility(null)}
         >
           <div 
-            className="relative w-full max-w-2xl bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-200 text-[#0b2a63]"
+            className="modal-panel relative w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-200 text-[#0b2a63]"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header Image */}
-            <div className="relative h-60 sm:h-72 w-full bg-[#071f4c]">
+            <div className="relative h-48 sm:h-72 w-full bg-[#071f4c]">
               <img 
                 src={selectedFacility.image} 
                 alt={selectedFacility.title}
@@ -333,7 +335,7 @@ export default function FacilitiesPage({ onOpenAdmission, onOpenVirtualTour }) {
               
               <button 
                 onClick={() => setSelectedFacility(null)}
-                className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition-transform hover:scale-110 active:scale-90 cursor-pointer"
+                className="absolute top-3 right-3 w-11 h-11 rounded-full bg-black/60 hover:bg-black text-white flex items-center justify-center backdrop-blur-md transition-transform hover:scale-110 active:scale-90 cursor-pointer"
                 aria-label="Close modal"
               >
                 <X className="w-5 h-5" />

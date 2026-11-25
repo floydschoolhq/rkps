@@ -53,6 +53,15 @@
     font-family: inherit;
   }
 
+  /* iOS Safari zooms the page when a field under 16px gets focus; keep phone fields at 16px. */
+  @media (max-width: 639.98px) {
+    input:not([type='checkbox']):not([type='radio']),
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
+
   /* Subpage headings follow the homepage: uppercase Bebas. */
   .heading-serif {
     text-transform: uppercase;
@@ -334,6 +343,20 @@
 .split-word-mask {
   padding-block: 0.1em;
   margin-block: -0.1em;
+}
+
+/* Popup panels: never taller than the visible screen; scroll inside instead.
+   svh = height with the mobile browser bars showing (vh fallback for older browsers). */
+.modal-panel {
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+@supports (height: 100svh) {
+  .modal-panel {
+    max-height: calc(100svh - 2rem);
+  }
 }
 
 /* Hide scrollbars on swipe tracks (SnapSlider, TabStrip) while keeping them scrollable. */
